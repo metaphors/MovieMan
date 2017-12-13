@@ -13,6 +13,10 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let movie of moviesProvider.hotMovies">
+      {{movie["nm"]}}
+    </button>
+  </ion-list>
 </ion-content>
