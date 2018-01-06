@@ -17,19 +17,23 @@ import {MoviesProvider} from '../providers/movies/movies';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp, {
+      mode: "ios",
       preloadModules: true
     })
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MoviesProvider
-  ]
+  entryComponents:
+    [
+      MyApp
+    ],
+  providers:
+    [
+      StatusBar,
+      SplashScreen,
+      {provide: ErrorHandler, useClass: IonicErrorHandler},
+      MoviesProvider
+    ]
 })
+
 export class AppModule {
 }

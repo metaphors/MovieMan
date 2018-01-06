@@ -7,16 +7,135 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>电影</ion-title>
+    <ion-buttons start>
+      <button class="nav-button" ion-button color="gray">
+        南京&nbsp;
+        <ion-icon name="arrow-down"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-segment color="orangered" [(ngModel)]="type">
+      <ion-segment-button value="hot" (ionSelect)="goToSlide(0)">
+        正在热映
+      </ion-segment-button>
+      <ion-segment-button value="coming" (ionSelect)="goToSlide(1)">
+        即将上映
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+      <button class="nav-button" ion-button icon-only color="orangered">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let movie of moviesProvider.hotMovies">
-      {{movie["nm"]}}
+<ion-content [ngSwitch]="type">
+
+  <ion-fab right bottom>
+    <button ion-fab color="tomato" (click)="scrollToTop()">
+      <ion-icon name="arrow-up"></ion-icon>
     </button>
-  </ion-list>
+  </ion-fab>
+
+  <ion-slides (ionSlideWillChange)="slideToAnother()" #outerSlides>
+    <ion-slide>
+      <ion-content class="inner-ion-content" #innerHotMoviesContent>
+        <ion-refresher *ngSwitchCase="'hot'" (ionRefresh)="doRefresh($event,type)">
+          <ion-refresher-content pullingText="下拉刷新" refreshingSpinner="bubbles"></ion-refresher-content>
+        </ion-refresher>
+
+        <ion-list *ngSwitchCase="'hot'">
+          <ion-item *ngFor="let movie of moviesProvider.hotMovies">
+            <div class="movie-img" [ngStyle]="{'background-image': 'url(' + movie['img'] + ')'}" item-start></div>
+
+            <h2 class="movie-name">
+              {{movie['nm']}}
+              <img class="movie-version" *ngIf="movie['preSale']===1" src="assets/imgs/movie-version/presale.png"
+                   alt="presale"/>
+              <img class="movie-version" *ngIf="movie['preSale']===0 && movie['3d']===false"
+                   src="assets/imgs/movie-version/2D.png" alt="2D"/>
+              <img class="movie-version" *ngIf="movie['preSale']===0 && movie['3d']===true"
+                   src="assets/imgs/movie-version/3D.png" alt="3D"/>
+              <img class="movie-version" *ngIf="movie['preSale']===0 && movie['imax']===true"
+                   src="assets/imgs/movie-version/IMAX.png" alt="IMAX"/>
+            </h2>
+            <h3>{{movie['cat']}}</h3>
+            <p>导演：{{movie['dir']}}</p>
+            <p>主演：{{movie['star']}}</p>
+            <p>{{movie['rt']}}</p>
+
+            <button ion-button round color="orangered" item-end>&nbsp;查看&nbsp;</button>
+          </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll *ngIf="moviesProvider.hasNext[type]" (ionInfinite)="doInfinite($event,type)">
+          <ion-infinite-scroll-content loadingSpinner="dots"></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-content>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-content class="inner-ion-content" #innerComingMoviesContent>
+        <ion-refresher *ngSwitchCase="'coming'" (ionRefresh)="doRefresh($event,type)">
+          <ion-refresher-content pullingText="下拉刷新" refreshingSpinner="bubbles"></ion-refresher-content>
+        </ion-refresher>
+
+        <ion-list>
+          <ion-list-header>预告片推荐</ion-list-header>
+
+          <ion-item class="trailers-item">
+            <ion-slides slidesPerView="1.7" #innerTrailersSlides>
+              <ion-slide *ngFor="let trailer of moviesProvider.trailers">
+                <div class="trailer-img" [ngStyle]="{'background-image': 'url(' + trailer['img'] + ')'}">
+                  <h3 class="trailer-movie-name">{{trailer['movieName']}}</h3>
+                  <p class="trailer-origin-name">{{trailer['originName']}}</p>
+                  <ion-icon class="play-button" name="play" color="light"></ion-icon>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-item>
+        </ion-list>
+
+        <ion-list class="expected-movies-list">
+          <ion-list-header>近期最受期待</ion-list-header>
+
+          <ion-item class="expected-movies-item">
+            <ion-slides slidesPerView="3.3" #innerExpectedMoviesSlides>
+              <ion-slide *ngFor="let movie of moviesProvider.expectedMovies">
+                <div class="expected-movie-img"
+                     [ngStyle]="{'background-image': 'url(' + 'http://p0.meituan.net/165.220'+movie['img'].substring(25) + ')'}">
+                  <p class="expected-movie-wish">{{movie['wish']}} 人想看</p>
+                </div>
+                <h3 class="expected-movie-name">{{movie['nm']}}</h3>
+                <p class="expected-movie-coming-title">{{movie['comingTitle']}}</p>
+              </ion-slide>
+            </ion-slides>
+          </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'coming'">
+          <ion-item *ngFor="let movie of moviesProvider.comingMovies">
+            <div class="movie-img" [ngStyle]="{'background-image': 'url(' + movie['img'] + ')'}" item-start></div>
+
+            <h2 class="movie-name">{{movie['nm']}}</h2>
+            <h3 *ngIf="movie['cat']!==''">{{movie['cat']}}</h3>
+            <p *ngIf="movie['dir']!==''">导演：{{movie['dir']}}</p>
+            <p *ngIf="movie['star']!==''">主演：{{movie['star']}}</p>
+            <p *ngIf="movie['rt']!==''">{{movie['rt']}}</p>
+
+            <button ion-button round color="orangered" item-end>&nbsp;查看&nbsp;</button>
+          </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll *ngIf="moviesProvider.hasNext[type]" (ionInfinite)="doInfinite($event,type)">
+          <ion-infinite-scroll-content loadingSpinner="dots"></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-content>
+    </ion-slide>
+  </ion-slides>
+
 </ion-content>

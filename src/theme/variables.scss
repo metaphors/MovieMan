@@ -32,14 +32,27 @@ $colors: (
   secondary: #32db64,
   danger: #f53d3d,
   light: #f4f4f4,
-  dark: #222
+  dark: #222,
+  orangered: #ff4500,
+  tomato: #ff6347,
+  gray: #808080,
 );
 
-$tabs-tab-color-active: orangered;
+$tabs-tab-color-active: color($colors, orangered);
+
+$refresher-icon-color: color($colors, orangered);
+$refresher-text-color: color($colors, orangered);
+
+$infinite-scroll-loading-color: color($colors, orangered);
+$infinite-scroll-loading-margin-bottom: 0;
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+$segment-button-ios-toolbar-font-size: 1.5rem;
+$segment-button-ios-border-radius: 20px;
+
+$list-ios-header-border-bottom: 0;
 
 // App Material Design Variables
 // --------------------------------------------------

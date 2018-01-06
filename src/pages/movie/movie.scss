@@ -1,3 +1,137 @@
 page-movie {
+  .nav-button {
+    font-size: 1.5rem;
+  }
 
+  .slide-zoom {
+    height: 100%;
+  }
+
+  .inner-ion-content .scroll-content {
+    margin-bottom: 0 !important;
+  }
+
+  .list {
+    margin-bottom: 0;
+  }
+
+  .movie-img {
+    width: 69px;
+    height: 99px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .movie-name {
+    max-width: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .movie-version {
+    height: 1.3rem;
+    vertical-align: middle;
+  }
+
+  .item-ios h2, .item-ios h3, .item-ios p {
+    margin-bottom: 0;
+  }
+
+  .item-ios h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  .item-ios p {
+    font-size: 1.3rem;
+  }
+
+  ion-list-header {
+    text-align: left;
+  }
+
+  .trailers-item .item-inner {
+    padding-right: 0 !important;
+  }
+
+  .trailers-item .label-ios {
+    margin-top: 0;
+    margin-right: 0;
+  }
+
+  .trailer-img {
+    width: 200px;
+    height: 124px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .trailer-movie-name {
+    position: absolute;
+    bottom: 25px;
+    left: 5px;
+    color: white;
+    font-weight: bold;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .trailer-origin-name {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: white;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .play-button {
+    line-height: 124px;
+    font-size: 1.8em;
+  }
+
+  .expected-movies-list {
+    margin-top: 10px;
+  }
+
+  .expected-movies-item .item-inner {
+    padding-right: 0 !important;
+  }
+
+  .expected-movies-item .label-ios {
+    margin-top: 0;
+    margin-right: 0;
+  }
+
+  .expected-movie-img {
+    width: 100px;
+    height: 144px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .expected-movie-wish {
+    position: absolute;
+    bottom: 45px;
+    left: 5px;
+    color: orange;
+    font-size: 1rem !important;
+    font-weight: bold;
+  }
+
+  .expected-movie-name, .expected-movie-coming-title {
+    text-align: left;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .expected-movie-name {
+    margin-top: 5px;
+  }
 }
