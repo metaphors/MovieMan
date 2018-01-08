@@ -8,6 +8,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {MyApp} from './app.component';
 
 import {MoviesProvider} from '../providers/movies/movies';
+import { GeolocationProvider } from '../providers/geolocation/geolocation';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MoviesProvider} from '../providers/movies/movies';
       StatusBar,
       SplashScreen,
       {provide: ErrorHandler, useClass: IonicErrorHandler},
-      MoviesProvider
+      MoviesProvider,
+    GeolocationProvider
     ]
 })
 

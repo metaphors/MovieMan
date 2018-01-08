@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, Slides, Content, Refresher, InfiniteScroll} from 'ionic-angular';
 
 import {MoviesProvider} from "../../providers/movies/movies";
+import {GeolocationProvider} from "../../providers/geolocation/geolocation";
 
 /**
  * Generated class for the MoviePage page.
@@ -29,15 +30,15 @@ export class MoviePage {
   offset: any = {"hot": 0, "coming": 0};
   limit: number = 12;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider) {
     this.type = "hot";
 
     this.moviesProvider.getMovies("init", "hot", this.offset["hot"], this.limit);
     this.moviesProvider.getMovies("init", "coming", this.offset["hot"], this.limit);
-
     this.moviesProvider.getTrailers();
-
     this.moviesProvider.getExpectedMovies();
+
+    this.geolocationProvider.getCurrentCity();
   }
 
   scrollToTop() {
