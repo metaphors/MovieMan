@@ -18,6 +18,8 @@ export class MoviesProvider {
 
   expectedMovies: any[];
 
+  expectedMoviesTotal: number;
+
   constructor(public http: HttpClient) {
 
   }
@@ -28,18 +30,18 @@ export class MoviesProvider {
       if (method === "init") {
         if (type === "hot") {
           this.hotMovies = data["data"]["movies"];
-          console.log("init hot movies", this.hotMovies);
+          console.log("hot movies", this.hotMovies);
         } else if (type === "coming") {
           this.comingMovies = data["data"]["movies"];
-          console.log("init coming movies", this.comingMovies);
+          console.log("coming movies", this.comingMovies);
         }
       } else if (method === "load") {
         if (type === "hot") {
           this.hotMovies = this.hotMovies.concat(data["data"]["movies"]);
-          console.log("load hot movies", this.hotMovies);
+          console.log("hot movies", this.hotMovies);
         } else if (type === "coming") {
           this.comingMovies = this.comingMovies.concat(data["data"]["movies"]);
-          console.log("load coming movies", this.comingMovies);
+          console.log("coming movies", this.comingMovies);
         }
       }
       this.hasNext[type] = data["data"]["hasNext"];
@@ -60,6 +62,14 @@ export class MoviesProvider {
     this.http.get(expectedMoviesUrl).subscribe(data => {
       this.expectedMovies = data["data"]["coming"];
       console.log("expected movies", this.expectedMovies);
+    });
+  }
+
+  getExpectedMoviesTotal() {
+    let expectedMoviesTotalUrl: string = "http://api.maoyan.com/mmdb/movie/v1/list/wish/order/coming.json?offset=0&limit=0";
+    this.http.get(expectedMoviesTotalUrl).subscribe(data => {
+      this.expectedMoviesTotal = data["data"]["paging"]["total"];
+      console.log("expected movies total", this.expectedMoviesTotal);
     });
   }
 

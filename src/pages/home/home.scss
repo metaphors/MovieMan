@@ -1,3 +1,139 @@
 page-home {
+  .list {
+    margin-bottom: 0;
+  }
 
+  ion-list-header {
+    font-size: 1.6rem !important;
+    font-weight: bold !important;
+  }
+
+  .hot-movies-item .item-inner {
+    padding-right: 0 !important;
+  }
+
+  .hot-movies-item .label-ios {
+    margin-top: 0;
+    margin-right: 0;
+  }
+
+  .hot-movie-img {
+    width: 100px;
+    height: 144px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .hot-movie-name {
+    margin-top: 5px;
+    text-align: left;
+    font-weight: bold;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ion-item-divider {
+    min-height: 0;
+    height: 10px;
+  }
+
+  .coming-movies-list-header, .information-list-header {
+    margin-top: 0 !important;
+  }
+
+  .coming-movies-item .item-inner {
+    padding-right: 0 !important;
+  }
+
+  .coming-movies-item .label-ios {
+    margin-top: 0;
+    margin-right: 0;
+  }
+
+  .coming-movie-img {
+    width: 100px;
+    height: 144px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .coming-movie-wish {
+    position: absolute;
+    bottom: 50px;
+    left: 5px;
+    color: orange;
+    font-size: 1rem !important;
+    font-weight: bold;
+  }
+
+  .coming-movie-name, .coming-movie-coming-title {
+    text-align: left;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .coming-movie-name {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+
+  .information-item .label {
+    white-space: normal;
+  }
+
+  .information-title {
+    float: left;
+    width: 50%;
+  }
+
+  .information-img-1-1 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    float: right;
+    width: 45%;
+    height: 111px;
+  }
+
+  .information-img-2-1, .information-img-2-2 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 48%;
+    height: 99px;
+    margin-top: 5px;
+  }
+
+  .information-img-2-1 {
+    float: left;
+  }
+
+  .information-img-2-2 {
+    float: right;
+  }
+
+  .information-img-3-1, .information-img-3-2, .information-img-3-3 {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 32%;
+    height: 99px;
+  }
+
+  .information-img-3-1 {
+    float: left;
+  }
+
+  .information-img-3-2 {
+    float: left;
+    margin-left: 2%;
+  }
+
+  .information-img-3-3 {
+    float: right;
+  }
 }

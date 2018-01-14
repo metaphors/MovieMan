@@ -1,8 +1,4 @@
 page-movie {
-  .nav-button {
-    font-size: 1.5rem;
-  }
-
   .slide-zoom {
     height: 100%;
   }
@@ -94,8 +90,13 @@ page-movie {
     font-size: 1.8em;
   }
 
-  .expected-movies-list {
-    margin-top: 10px;
+  ion-item-divider {
+    min-height: 0;
+    height: 10px;
+  }
+
+  .expected-movies-list-header {
+    margin-top: 0 !important;
   }
 
   .expected-movies-item .item-inner {
@@ -133,5 +134,6 @@ page-movie {
 
   .expected-movie-name {
     margin-top: 5px;
+    font-weight: bold;
   }
 }

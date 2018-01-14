@@ -9,6 +9,7 @@ import {MyApp} from './app.component';
 
 import {MoviesProvider} from '../providers/movies/movies';
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
+import { InformationProvider } from '../providers/information/information';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GeolocationProvider } from '../providers/geolocation/geolocation';
       SplashScreen,
       {provide: ErrorHandler, useClass: IonicErrorHandler},
       MoviesProvider,
-    GeolocationProvider
+    GeolocationProvider,
+    InformationProvider
     ]
 })
 

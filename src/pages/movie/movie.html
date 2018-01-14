@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <ion-buttons start>
-      <button class="nav-button" ion-button color="gray">
+      <button ion-button color="gray">
         {{geolocationProvider.currentCity}}&nbsp;
         <ion-icon name="arrow-down"></ion-icon>
       </button>
@@ -100,8 +100,10 @@
           </ion-item>
         </ion-list>
 
-        <ion-list class="expected-movies-list">
-          <ion-list-header>近期最受期待</ion-list-header>
+        <ion-list>
+          <ion-item-divider color="light"></ion-item-divider>
+
+          <ion-list-header class="expected-movies-list-header">近期最受期待</ion-list-header>
 
           <ion-item class="expected-movies-item">
             <ion-slides slidesPerView="3.3" #innerExpectedMoviesSlides>
@@ -118,6 +120,8 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'coming'">
+          <ion-item-divider color="light"></ion-item-divider>
+
           <ion-item *ngFor="let movie of moviesProvider.comingMovies">
             <div class="movie-img" [ngStyle]="{'background-image': 'url(' + movie['img'] + ')'}" item-start></div>
 

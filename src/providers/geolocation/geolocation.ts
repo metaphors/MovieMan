@@ -25,7 +25,6 @@ export class GeolocationProvider {
         let longitude: string = data["geocodes"][0]["location"].split(",")[0];
         let latitude: string = data["geocodes"][0]["location"].split(",")[1];
         let meituanLocatingUrl: string = "http://api.mobile.meituan.com/group/v1/city/latlng/" + latitude + "," + longitude + "?tag=0";
-        console.log(meituanLocatingUrl);
         this.http.get(meituanLocatingUrl).subscribe(data => {
           this.currentCity = data["data"]["city"];
           console.log("current city", this.currentCity);

@@ -6,13 +6,114 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>首页</ion-title>
+  <ion-navbar color="orangered">
+    <ion-buttons start>
+      <button ion-button>
+        {{geolocationProvider.currentCity}}&nbsp;
+        <ion-icon name="arrow-down"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-searchbar [placeholder]="'搜索'"></ion-searchbar>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-fab right bottom>
+    <button ion-fab color="tomato" (click)="scrollToTop()">
+      <ion-icon name="arrow-up"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="下拉刷新" refreshingSpinner="bubbles"></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-list-header>
+      正在热映
+      <button ion-button clear color="gray" item-end>
+        更多&nbsp;
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-list-header>
+
+    <ion-item class="hot-movies-item">
+      <ion-slides slidesPerView="3.3" #hotMoviesSlides>
+        <ion-slide *ngFor="let movie of moviesProvider.hotMovies">
+          <div class="hot-movie-img" [ngStyle]="{'background-image': 'url(' + movie['img'] + ')'}"></div>
+          <h3 class="hot-movie-name">{{movie['nm']}}</h3>
+        </ion-slide>
+      </ion-slides>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-divider color="light"></ion-item-divider>
+
+    <ion-list-header class="coming-movies-list-header">
+      即将上映
+      <button ion-button clear color="gray" item-end>
+        全部({{moviesProvider.expectedMoviesTotal}})&nbsp;
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-list-header>
+
+    <ion-item class="coming-movies-item">
+      <ion-slides slidesPerView="3.3" #comingMoviesSlides>
+        <ion-slide *ngFor="let movie of moviesProvider.expectedMovies">
+          <div class="coming-movie-img"
+               [ngStyle]="{'background-image': 'url(' + 'http://p0.meituan.net/165.220'+movie['img'].substring(25) + ')'}">
+            <p class="coming-movie-wish">{{movie['wish']}} 人想看</p>
+          </div>
+          <h3 class="coming-movie-name">{{movie['nm']}}</h3>
+          <p class="coming-movie-coming-title">{{movie['comingTitle']}}</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-divider color="light"></ion-item-divider>
+
+    <ion-list-header class="information-list-header">电影资讯</ion-list-header>
+
+    <ion-item class="information-item" *ngFor="let information of informationProvider.information">
+      <div *ngIf="information['images'].length===1">
+        <div class="information-title">{{information['title']}}</div>
+        <div class="information-img-1-1"
+             [ngStyle]="{'background-image': 'url(' + information['images'][0]['url'] + ')'}"></div>
+      </div>
+
+      <div *ngIf="information['images'].length===2">
+        {{information['title']}}
+        <div>
+          <div class="information-img-2-1"
+               [ngStyle]="{'background-image': 'url(' + information['images'][0]['url'] + ')'}"></div>
+          <div class="information-img-2-2"
+               [ngStyle]="{'background-image': 'url(' + information['images'][1]['url'] + ')'}"></div>
+        </div>
+      </div>
+
+      <div *ngIf="information['images'].length===3">
+        {{information['title']}}
+        <div>
+          <div class="information-img-3-1"
+               [ngStyle]="{'background-image': 'url(' + information['images'][0]['url'] + ')'}"></div>
+          <div class="information-img-3-2"
+               [ngStyle]="{'background-image': 'url(' + information['images'][1]['url'] + ')'}"></div>
+          <div class="information-img-3-3"
+               [ngStyle]="{'background-image': 'url(' + information['images'][2]['url'] + ')'}"></div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="dots"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
