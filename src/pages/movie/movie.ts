@@ -58,8 +58,12 @@ export class MoviePage {
     let index = this.outerSlides.getActiveIndex();
     if (index === 0) {
       this.type = "hot";
+      this.outerSlides.lockSwipeToPrev(true);
+      this.outerSlides.lockSwipeToNext(false);
     } else if (index === 1) {
       this.type = "coming";
+      this.outerSlides.lockSwipeToPrev(false);
+      this.outerSlides.lockSwipeToNext(true);
     }
   }
 
@@ -87,6 +91,8 @@ export class MoviePage {
   }
 
   ngAfterViewInit() {
+    this.outerSlides.lockSwipeToPrev(true);
+
     this.innerTrailersSlides.freeMode = true;
     this.innerExpectedMoviesSlides.freeMode = true;
   }
