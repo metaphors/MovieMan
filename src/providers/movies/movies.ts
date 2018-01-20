@@ -18,6 +18,7 @@ export class MoviesProvider {
 
   expectedMovies: any[];
 
+  hotMoviesTotal: number;
   expectedMoviesTotal: number;
 
   constructor(public http: HttpClient) {
@@ -62,6 +63,14 @@ export class MoviesProvider {
     this.http.get(expectedMoviesUrl).subscribe(data => {
       this.expectedMovies = data["data"]["coming"];
       console.log("expected movies", this.expectedMovies);
+    });
+  }
+
+  getHotMoviesTotal() {
+    let hotMoviesTotalUrl: string = "http://m.maoyan.com/movie/list.json?type=hot&offset=0&limit=100";
+    this.http.get(hotMoviesTotalUrl).subscribe(data => {
+      this.hotMoviesTotal = data["data"]["movies"].length;
+      console.log("hot movies total", this.hotMoviesTotal);
     });
   }
 

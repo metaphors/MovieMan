@@ -28,6 +28,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public informationProvider: InformationProvider) {
     this.moviesProvider.getMovies("init", "hot", 0, 12);
+    this.moviesProvider.getHotMoviesTotal();
     this.moviesProvider.getExpectedMovies();
     this.moviesProvider.getExpectedMoviesTotal();
 
@@ -50,6 +51,7 @@ export class HomePage {
     setTimeout(() => {
       this.offset = 0;
       this.moviesProvider.getMovies("init", "hot", 0, 12);
+      this.moviesProvider.getHotMoviesTotal();
       this.moviesProvider.getExpectedMovies();
       this.moviesProvider.getExpectedMoviesTotal();
       this.informationProvider.getInformation("init", this.offset);

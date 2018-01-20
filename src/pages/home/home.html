@@ -22,7 +22,7 @@
 
 <ion-content>
 
-  <ion-fab right bottom>
+  <ion-fab class="animated bounceInUp" right bottom>
     <button ion-fab color="tomato" (click)="scrollToTop()">
       <ion-icon name="arrow-up"></ion-icon>
     </button>
@@ -36,7 +36,7 @@
     <ion-list-header>
       正在热映
       <button ion-button clear color="gray" item-end>
-        更多&nbsp;
+        全部({{moviesProvider.hotMoviesTotal}})&nbsp;
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-list-header>
