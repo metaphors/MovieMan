@@ -64,6 +64,12 @@ page-movie {
     background-repeat: no-repeat;
   }
 
+  .trailer-img-cover {
+    width: 200px;
+    height: 124px;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));;
+  }
+
   .trailer-movie-name {
     position: absolute;
     bottom: 25px;
@@ -116,9 +122,17 @@ page-movie {
     background-repeat: no-repeat;
   }
 
+  .expected-movie-img-cover {
+    position: relative;
+    top: 96px;
+    width: 100px;
+    height: 48px;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+  }
+
   .expected-movie-wish {
     position: absolute;
-    bottom: 45px;
+    bottom: 3px;
     left: 5px;
     color: orange;
     font-size: 1rem !important;

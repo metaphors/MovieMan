@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams, Slides, Content, Refresher, Infinit
 
 import {MoviesProvider} from "../../providers/movies/movies";
 import {GeolocationProvider} from "../../providers/geolocation/geolocation";
+import {ParametersProvider} from "../../providers/parameters/parameters";
 
 /**
  * Generated class for the MoviePage page.
@@ -30,15 +31,30 @@ export class MoviePage {
   offset: any = {"hot": 0, "coming": 0};
   limit: number = 12;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider) {
-    this.type = "hot";
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public parametersProvider: ParametersProvider) {
     this.moviesProvider.getMovies("init", "hot", this.offset["hot"], this.limit);
     this.moviesProvider.getMovies("init", "coming", this.offset["hot"], this.limit);
     this.moviesProvider.getTrailers();
     this.moviesProvider.getExpectedMovies();
 
     this.geolocationProvider.getCurrentCity();
+  }
+
+  ngAfterViewInit() {
+    this.outerSlides.lockSwipeToPrev(true);
+
+    this.innerTrailersSlides.freeMode = true;
+    this.innerExpectedMoviesSlides.freeMode = true;
+  }
+
+  ionViewWillEnter() {
+    this.parametersProvider.parameterType['passFromHomePageToMoviePage'] === true ? this.type = this.parametersProvider.parameterType['type'] : this.type = "hot";
+    this.parametersProvider.initParameterType();
+    if (this.type === "hot") {
+      this.goToSlide(0);
+    } else if (this.type === "coming") {
+      this.goToSlide(1);
+    }
   }
 
   scrollToTop() {
@@ -88,12 +104,5 @@ export class MoviePage {
       this.moviesProvider.getMovies("load", type, this.offset[type], this.limit);
       infiniteScroll.complete();
     }, 1000);
-  }
-
-  ngAfterViewInit() {
-    this.outerSlides.lockSwipeToPrev(true);
-
-    this.innerTrailersSlides.freeMode = true;
-    this.innerExpectedMoviesSlides.freeMode = true;
   }
 }

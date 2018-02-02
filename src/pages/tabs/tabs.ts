@@ -23,7 +23,6 @@ export class TabsPage {
   dataRoot = 'DataPage';
   moreRoot = 'MorePage';
 
-
   constructor(public navCtrl: NavController) {
   }
 

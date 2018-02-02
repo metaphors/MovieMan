@@ -35,7 +35,7 @@
   <ion-list>
     <ion-list-header>
       正在热映
-      <button ion-button clear color="gray" item-end>
+      <button ion-button clear color="gray" item-end (click)="openMoviesPage('hot')">
         全部({{moviesProvider.hotMoviesTotal}})&nbsp;
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
@@ -56,7 +56,7 @@
 
     <ion-list-header class="coming-movies-list-header">
       即将上映
-      <button ion-button clear color="gray" item-end>
+      <button ion-button clear color="gray" item-end (click)="openMoviesPage('coming')">
         全部({{moviesProvider.expectedMoviesTotal}})&nbsp;
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
@@ -67,7 +67,9 @@
         <ion-slide *ngFor="let movie of moviesProvider.expectedMovies">
           <div class="coming-movie-img"
                [ngStyle]="{'background-image': 'url(' + 'http://p0.meituan.net/165.220'+movie['img'].substring(25) + ')'}">
-            <p class="coming-movie-wish">{{movie['wish']}} 人想看</p>
+            <div class="coming-movie-img-cover">
+              <p class="coming-movie-wish">{{movie['wish']}} 人想看</p>
+            </div>
           </div>
           <h3 class="coming-movie-name">{{movie['nm']}}</h3>
           <p class="coming-movie-coming-title">{{movie['comingTitle']}}</p>
@@ -82,6 +84,10 @@
     <ion-list-header class="information-list-header">电影资讯</ion-list-header>
 
     <ion-item class="information-item" *ngFor="let information of informationProvider.information">
+      <div *ngIf="information['images'].length===0">
+        {{information['title']}}
+      </div>
+
       <div *ngIf="information['images'].length===1">
         <div class="information-title">{{information['title']}}</div>
         <div class="information-img-1-1"
@@ -108,6 +114,14 @@
           <div class="information-img-3-3"
                [ngStyle]="{'background-image': 'url(' + information['images'][2]['url'] + ')'}"></div>
         </div>
+      </div>
+
+      <div class="information-below">
+        <p class="information-online-time">{{timestampToDate(information['onlineTime'])}}</p>
+        <p class="information-view-count">
+          <ion-icon name="eye-outline"></ion-icon>
+          <span>{{information['viewCount']}}</span>
+        </p>
       </div>
     </ion-item>
   </ion-list>

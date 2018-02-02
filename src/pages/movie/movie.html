@@ -91,9 +91,11 @@
             <ion-slides slidesPerView="1.7" #innerTrailersSlides>
               <ion-slide *ngFor="let trailer of moviesProvider.trailers">
                 <div class="trailer-img" [ngStyle]="{'background-image': 'url(' + trailer['img'] + ')'}">
-                  <h3 class="trailer-movie-name">{{trailer['movieName']}}</h3>
-                  <p class="trailer-origin-name">{{trailer['originName']}}</p>
-                  <ion-icon class="play-button" name="play" color="light"></ion-icon>
+                  <div class="trailer-img-cover">
+                    <h3 class="trailer-movie-name">{{trailer['movieName']}}</h3>
+                    <p class="trailer-origin-name">{{trailer['originName']}}</p>
+                    <ion-icon class="play-button" name="play" color="light"></ion-icon>
+                  </div>
                 </div>
               </ion-slide>
             </ion-slides>
@@ -110,7 +112,9 @@
               <ion-slide *ngFor="let movie of moviesProvider.expectedMovies">
                 <div class="expected-movie-img"
                      [ngStyle]="{'background-image': 'url(' + 'http://p0.meituan.net/165.220'+movie['img'].substring(25) + ')'}">
-                  <p class="expected-movie-wish">{{movie['wish']}} 人想看</p>
+                  <div class="expected-movie-img-cover">
+                    <p class="expected-movie-wish">{{movie['wish']}} 人想看</p>
+                  </div>
                 </div>
                 <h3 class="expected-movie-name">{{movie['nm']}}</h3>
                 <p class="expected-movie-coming-title">{{movie['comingTitle']}}</p>

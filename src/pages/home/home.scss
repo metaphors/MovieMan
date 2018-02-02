@@ -60,9 +60,18 @@ page-home {
     background-repeat: no-repeat;
   }
 
+  .coming-movie-img-cover {
+    position: relative;
+    top: 96px;
+    width: 100px;
+    height: 48px;
+    margin-bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+  }
+
   .coming-movie-wish {
     position: absolute;
-    bottom: 50px;
+    bottom: 3px;
     left: 5px;
     color: orange;
     font-size: 1rem !important;
@@ -96,7 +105,7 @@ page-home {
     background-repeat: no-repeat;
     float: right;
     width: 45%;
-    height: 111px;
+    height: 108px;
   }
 
   .information-img-2-1, .information-img-2-2 {
@@ -105,7 +114,7 @@ page-home {
     background-repeat: no-repeat;
     width: 48%;
     height: 99px;
-    margin-top: 5px;
+    margin-top: 8px;
   }
 
   .information-img-2-1 {
@@ -122,19 +131,25 @@ page-home {
     background-repeat: no-repeat;
     width: 32%;
     height: 80px;
-    margin-top: 5px;
+    float: left;
+    margin-top: 8px;
   }
 
-  .information-img-3-1 {
-    float: left;
-  }
-
-  .information-img-3-2 {
-    float: left;
+  .information-img-3-2, .information-img-3-3 {
     margin-left: 2%;
   }
 
-  .information-img-3-3 {
+  .information-below {
+    float: left;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .information-online-time {
+    float: left;
+  }
+
+  .information-view-count {
     float: right;
   }
 }

@@ -4,6 +4,7 @@ import {IonicPage, NavController, NavParams, Refresher, Content, Slides, Infinit
 import {MoviesProvider} from "../../providers/movies/movies";
 import {GeolocationProvider} from "../../providers/geolocation/geolocation";
 import {InformationProvider} from "../../providers/information/information";
+import {ParametersProvider} from "../../providers/parameters/parameters";
 
 /**
  * Generated class for the HomePage page.
@@ -26,7 +27,7 @@ export class HomePage {
 
   offset: number = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public informationProvider: InformationProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public informationProvider: InformationProvider, public parametersProvider: ParametersProvider) {
     this.moviesProvider.getMovies("init", "hot", 0, 12);
     this.moviesProvider.getHotMoviesTotal();
     this.moviesProvider.getExpectedMovies();
@@ -66,5 +67,21 @@ export class HomePage {
       this.informationProvider.getInformation("load", this.offset);
       infiniteScroll.complete();
     }, 1000);
+  }
+
+  timestampToDate(timestamp: number) {
+    let date = new Date(timestamp);
+    let Y = date.getFullYear() + '-';
+    let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    let D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' ';
+    let h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+    let m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+    let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+    return Y + M + D + h + m + s;
+  }
+
+  openMoviesPage(type: string) {
+    this.parametersProvider.setParameterType(type, true);
+    this.navCtrl.parent.select(1);
   }
 }
