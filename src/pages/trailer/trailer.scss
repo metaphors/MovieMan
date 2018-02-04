@@ -1,0 +1,18 @@
+page-trailer {
+  ion-content {
+    background-color: #000 !important;
+  }
+
+  vg-player {
+    width: 100%;
+    height: auto;
+    margin-top: 40%;
+  }
+
+  .origin-name, .movie-name {
+    color: color($colors, light);
+    margin-top: 10px;
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+}

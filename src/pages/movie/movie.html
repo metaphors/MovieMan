@@ -89,7 +89,8 @@
 
           <ion-item class="trailers-item">
             <ion-slides slidesPerView="1.7" #innerTrailersSlides>
-              <ion-slide *ngFor="let trailer of moviesProvider.trailers">
+              <ion-slide *ngFor="let trailer of moviesProvider.trailers" tappable
+                         (click)="playTrailer(trailer['img'],trailer['url'],trailer['originName'],trailer['movieName'])">
                 <div class="trailer-img" [ngStyle]="{'background-image': 'url(' + trailer['img'] + ')'}">
                   <div class="trailer-img-cover">
                     <h3 class="trailer-movie-name">{{trailer['movieName']}}</h3>

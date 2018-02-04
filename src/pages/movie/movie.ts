@@ -1,5 +1,14 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, Slides, Content, Refresher, InfiniteScroll} from 'ionic-angular';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  Slides,
+  Content,
+  Refresher,
+  InfiniteScroll,
+  ModalController
+} from 'ionic-angular';
 
 import {MoviesProvider} from "../../providers/movies/movies";
 import {GeolocationProvider} from "../../providers/geolocation/geolocation";
@@ -26,12 +35,14 @@ export class MoviePage {
   @ViewChild('innerHotMoviesContent') innerHotMoviesContent: Content;
   @ViewChild('innerComingMoviesContent') innerComingMoviesContent: Content;
 
+  trailerPage = 'TrailerPage';
+
   type: string;
 
   offset: any = {"hot": 0, "coming": 0};
   limit: number = 12;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public parametersProvider: ParametersProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public parametersProvider: ParametersProvider) {
     this.moviesProvider.getMovies("init", "hot", this.offset["hot"], this.limit);
     this.moviesProvider.getMovies("init", "coming", this.offset["hot"], this.limit);
     this.moviesProvider.getTrailers();
@@ -104,5 +115,15 @@ export class MoviePage {
       this.moviesProvider.getMovies("load", type, this.offset[type], this.limit);
       infiniteScroll.complete();
     }, 1000);
+  }
+
+  playTrailer(img: string, url: string, originName: string, movieName: string) {
+    let trailerModal = this.modalCtrl.create(this.trailerPage, {
+      img: img,
+      url: url,
+      originName: originName,
+      movieName: movieName
+    });
+    trailerModal.present();
   }
 }

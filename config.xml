@@ -12,6 +12,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="android-minSdkVersion" value="16" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="CordovaWebViewEngine" value="CDVUIWebViewEngine" />
     <preference name="DisallowOverscroll" value="true" />
