@@ -2,4 +2,57 @@ page-login {
   .scroll-content {
     background-color: #f8f8f8;
   }
+
+  .toolbar-md {
+    padding: 0;
+  }
+
+  .toolbar-md .toolbar-background {
+    background-color: white;
+  }
+
+  .scroll-content {
+    overflow-y: hidden;
+  }
+
+  ion-segment-button {
+    font-size: 1.5rem !important;
+  }
+
+  .segment-button {
+    color: color($colors, gray) !important;
+  }
+
+  .segment-activated {
+    color: color($colors, orangered) !important;
+  }
+
+  .swiper-slide {
+    display: block;
+  }
+
+  .login-button {
+    width: 90%;
+  }
+
+  .third-party-login {
+    width: 100%;
+    height: 120px;
+    position: fixed;
+    top: 72%;
+  }
+
+  .third-party-login-text{
+    font-size: 1.5rem;
+  }
+
+  hr {
+    width: 90%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .get-verification-button{
+    margin: 0 !important;
+  }
 }

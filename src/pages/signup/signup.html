@@ -14,5 +14,26 @@
 
 
 <ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>邮箱</ion-label>
+      <ion-input type="email" placeholder="请输入邮箱地址" clearInput="true" [(ngModel)]="signup.email"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label fixed>密码</ion-label>
+      <ion-input type="password" placeholder="请输入密码" clearInput="true" clearOnEdit="false"
+                 [(ngModel)]="signup.password">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>确认密码</ion-label>
+      <ion-input type="password" placeholder="请再次输入密码" clearInput="true" clearOnEdit="false"
+                 [(ngModel)]="signup.verification">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button class="sign-button" ion-button round color="orangered">注册</button>
 </ion-content>

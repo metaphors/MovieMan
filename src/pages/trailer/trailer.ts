@@ -8,7 +8,9 @@ import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  priority: 'off'
+})
 @Component({
   selector: 'page-trailer',
   templateUrl: 'trailer.html',

@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +13,20 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.ion-ios-weibo, .ion-ios-wechat, .ion-ios-qq {
+  height: 50px !important;
+  min-width: 50px !important;
+}
+
+.ion-ios-weibo {
+  content: url("../assets/icon/third-party/weibo.png");
+}
+
+.ion-ios-wechat {
+  content: url("../assets/icon/third-party/wechat.png");
+}
+
+.ion-ios-qq {
+  content: url("../assets/icon/third-party/qq.png");
+}

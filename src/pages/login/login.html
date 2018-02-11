@@ -15,5 +15,71 @@
 
 
 <ion-content>
+  <ion-toolbar mode="md">
+    <ion-segment mode="md" color="orangered" [(ngModel)]="loginMode">
+      <ion-segment-button value="email" (ionSelect)="goToSlide(0)">邮箱密码登录</ion-segment-button>
+      <ion-segment-button value="phone" (ionSelect)="goToSlide(1)">手机号快捷登录</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
+  <ion-slides #slides (ionSlideWillChange)="slideToAnother()">
+    <ion-slide>
+      <ion-list>
+        <ion-item>
+          <ion-label>邮箱</ion-label>
+          <ion-input type="email" placeholder="请输入邮箱地址" clearInput="true" [(ngModel)]="emailLogin.email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>密码</ion-label>
+          <ion-input [type]="isClearTextPassword?'text':'password'" placeholder="请输入密码" clearInput="true"
+                     clearOnEdit="false" [(ngModel)]="emailLogin.password">
+          </ion-input>
+          <button ion-button icon-only clear color="dark" item-end *ngIf="!isClearTextPassword"
+                  (click)="toggleClearTextPassword()">
+            <ion-icon name="eye"></ion-icon>
+          </button>
+          <button ion-button icon-only clear color="dark" item-end *ngIf="isClearTextPassword"
+                  (click)="toggleClearTextPassword()">
+            <ion-icon name="eye-off"></ion-icon>
+          </button>
+        </ion-item>
+      </ion-list>
+
+      <button class="login-button" ion-button round color="orangered">登录</button>
+
+      <button ion-button small clear color="gray" (click)="openPage(forgetPasswordPage)">忘记密码？</button>
+
+      <div class="third-party-login">
+        <hr/>
+        <ion-label class="third-party-login-text" color="gray">-第三方登录-</ion-label>
+        <button ion-button icon-only clear>
+          <ion-icon name="weibo"></ion-icon>
+        </button>
+        <button ion-button icon-only clear>
+          <ion-icon name="wechat"></ion-icon>
+        </button>
+        <button ion-button icon-only clear>
+          <ion-icon name="qq"></ion-icon>
+        </button>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-list>
+        <ion-item>
+          <ion-label>手机号</ion-label>
+          <ion-input type="tel" placeholder="仅支持中国大陆手机号" [(ngModel)]="phoneLogin.phone"></ion-input>
+          <button class="get-verification-button" ion-button item-end small color="light">获取验证码</button>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>验证码</ion-label>
+          <ion-input type="number" placeholder="请输入验证码" [(ngModel)]="phoneLogin.verification"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <button class="login-button" ion-button round color="orangered">登录</button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

@@ -9,7 +9,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
  */
 
 @IonicPage({
-  priority: 'low'
+  priority: 'off'
 })
 @Component({
   selector: 'page-information-detail',
