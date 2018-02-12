@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
-import {UserProvider} from "../../providers/user/user";
+import * as wilddog from "wilddog";
 
 /**
  * Generated class for the ForgetPasswordPage page.
@@ -20,7 +20,7 @@ import {UserProvider} from "../../providers/user/user";
 export class ForgetPasswordPage {
   email: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.email = '';
   }
 }

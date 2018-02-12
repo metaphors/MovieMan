@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Storage} from "@ionic/storage";
 
-import * as wilddog from 'wilddog'
-
 /*
   Generated class for the UserProvider provider.
 
@@ -11,14 +9,6 @@ import * as wilddog from 'wilddog'
 */
 @Injectable()
 export class UserProvider {
-  appId: string = "wd8837557731vfogoa";
-
   constructor(public storage: Storage) {
-    let config = {authDomain: this.appId + ".wilddog.com"};
-    wilddog.initializeApp(config);
-  }
-
-  getLoginStatus() {
-    return this.storage.get('has_logged_in');
   }
 }

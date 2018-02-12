@@ -46,7 +46,7 @@
         </ion-item>
       </ion-list>
 
-      <button class="login-button" ion-button round color="orangered">登录</button>
+      <button class="login-button" ion-button round color="orangered" (click)="onEmailLogin()">登录</button>
 
       <button ion-button small clear color="gray" (click)="openPage(forgetPasswordPage)">忘记密码？</button>
 
@@ -79,7 +79,7 @@
         </ion-item>
       </ion-list>
 
-      <button class="login-button" ion-button round color="orangered">登录</button>
+      <button class="login-button" ion-button round color="orangered" (click)="onPhoneLogin()">登录</button>
     </ion-slide>
   </ion-slides>
 </ion-content>

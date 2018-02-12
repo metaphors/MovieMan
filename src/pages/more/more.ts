@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
-import {UserProvider} from "../../providers/user/user";
 import {GeolocationProvider} from "../../providers/geolocation/geolocation";
+
+import * as wilddog from "wilddog";
 
 /**
  * Generated class for the MorePage page.
@@ -25,7 +26,7 @@ export class MorePage {
 
   hasLoggedIn: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public geolocationProvider: GeolocationProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocationProvider: GeolocationProvider) {
     this.getLoginStatus();
   }
 
@@ -36,9 +37,6 @@ export class MorePage {
   }
 
   getLoginStatus() {
-    this.userProvider.getLoginStatus().then(hasLoggedIn => {
-      this.hasLoggedIn = hasLoggedIn;
-      console.log("has logged in", this.hasLoggedIn);
-    });
+
   }
 }

@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 
-import {UserProvider} from "../../providers/user/user";
 import * as wilddog from "wilddog";
 
 /**
@@ -21,7 +20,7 @@ import * as wilddog from "wilddog";
 export class SignupPage {
   signup: { email: string, password: string, verification: string };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public userProvider: UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
     this.signup = {email: '', password: '', verification: ''};
   }
 
