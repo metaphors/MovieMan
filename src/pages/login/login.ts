@@ -10,9 +10,7 @@ import * as wilddog from "wilddog";
  * Ionic pages and navigation.
  */
 
-@IonicPage({
-  priority: 'high'
-})
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
