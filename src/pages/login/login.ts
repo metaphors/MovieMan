@@ -1,6 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
 
+import {UserProvider} from "../../providers/user/user";
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -27,7 +29,7 @@ export class LoginPage {
   emailLogin: { email: string, password: string };
   phoneLogin: { phone: string, verification: string };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
     this.loginMode = "email";
     this.isClearTextPassword = false;
 
