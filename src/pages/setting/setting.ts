@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ActionSheetController, ToastController} from 'ionic-angular';
 
 import * as wilddog from "wilddog";
 
@@ -18,7 +18,7 @@ import * as wilddog from "wilddog";
 export class SettingPage {
   hasLoggedIn: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
     this.getLoginState();
   }
 
@@ -43,5 +43,19 @@ export class SettingPage {
     toast.present().then(value => {
       return value;
     });
+  }
+
+  presentLogoutActionSheet() {
+    let logoutActionSheet = this.actionSheetCtrl.create({
+      title: '确定要退出登录吗？',
+      buttons: [{
+        text: '确定', handler: () => {
+          this.onLogout();
+        }
+      }, {text: '取消', role: 'cancel'}]
+    });
+    logoutActionSheet.present().then(value => {
+      return value;
+    })
   }
 }
