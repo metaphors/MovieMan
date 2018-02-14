@@ -104,7 +104,7 @@
         </ion-list>
 
         <ion-list>
-          <ion-item-divider color="light"></ion-item-divider>
+          <ion-item-divider color="background-light"></ion-item-divider>
 
           <ion-list-header class="expected-movies-list-header">近期最受期待</ion-list-header>
 
@@ -125,7 +125,7 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'coming'">
-          <ion-item-divider color="light"></ion-item-divider>
+          <ion-item-divider color="background-light"></ion-item-divider>
 
           <ion-item *ngFor="let movie of moviesProvider.comingMovies">
             <div class="movie-img" [style.background-image]="'url(' + movie['img'] + ')'" item-start></div>

@@ -8,7 +8,29 @@ page-setting {
     color: color($colors, dark);
   }
 
+  .list {
+    margin-bottom: 0;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .username {
+    white-space: normal;
+  }
+
+  .below-list {
+    margin-top: 10px;
+  }
+
   .logout-button {
     width: 90%;
+    margin-top: 32px;
   }
 }

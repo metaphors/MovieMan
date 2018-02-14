@@ -14,7 +14,37 @@
 
 
 <ion-content>
-  <button class="logout-button" ion-button round color="orangered" *ngIf="hasLoggedIn" (click)="presentLogoutActionSheet()">
+  <ion-list *ngIf="hasLoggedIn">
+    <ion-item tappable (click)="openPage(profilePage)">
+      <ion-avatar item-start>
+        <div class="avatar"
+             [style.background-image]="user.photoURL === '' ? 'url(assets/imgs/avatar/default.jpg)' : 'url(' + user.photoURL + ')'">
+        </div>
+      </ion-avatar>
+      <ion-label class="username">{{user.displayName}}</ion-label>
+      <ion-icon name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [style.margin-top]="hasLoggedIn === true ? '10px' : '0'">
+    <ion-item>
+      <ion-label>夜间模式</ion-label>
+      <ion-toggle color="orangered"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="below-list">
+    <button ion-item (click)="presentToast('App 暂未上线...')">
+      <ion-label>给我们评分</ion-label>
+    </button>
+
+    <button ion-item (click)="presentToast('App 暂未上线...')">
+      <ion-label>关于我们</ion-label>
+    </button>
+  </ion-list>
+
+  <button class="logout-button" ion-button round color="orangered" *ngIf="hasLoggedIn"
+          (click)="presentLogoutActionSheet()">
     退出登录
   </button>
 </ion-content>

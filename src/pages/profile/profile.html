@@ -7,12 +7,37 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>profile</ion-title>
+    <ion-title>个人信息</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+  <ion-list>
+    <button ion-item (click)="presentChangeAvatarActionSheet()">
+      <ion-label>头像</ion-label>
+      <ion-avatar item-end>
+        <div class="avatar"
+             [style.background-image]="user.photoURL === '' ? 'url(assets/imgs/avatar/default.jpg)' : 'url(' + user.photoURL + ')'">
+        </div>
+      </ion-avatar>
+    </button>
 
+    <button ion-item>
+      <ion-label>昵称</ion-label>
+      <span class="item-end-span" item-end>{{user.displayName}}</span>
+    </button>
+
+    <button ion-item>
+      <ion-label>绑定手机号</ion-label>
+      <span class="item-end-span" item-end *ngIf="user.phone === ''">未绑定</span>
+      <span class="item-end-span" item-end *ngIf="user.phone !== ''">{{user.phone}}</span>
+    </button>
+
+    <button ion-item>
+      <ion-label>帐号密码</ion-label>
+      <span class="item-end-span" item-end>修改</span>
+    </button>
+  </ion-list>
 </ion-content>

@@ -16,15 +16,31 @@ import * as wilddog from "wilddog";
   templateUrl: 'setting.html',
 })
 export class SettingPage {
+  profilePage = 'ProfilePage';
+
   hasLoggedIn: boolean;
+  user: { displayName: string, email: string, emailVerified: boolean, phone: string, phoneVerified: boolean, photoURL: string };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
+    this.user = {displayName: '', email: '', emailVerified: false, phone: '', phoneVerified: false, photoURL: ''};
     this.getLoginState();
   }
 
   getLoginState() {
     wilddog.auth().onAuthStateChanged(user => {
-      user !== null ? this.hasLoggedIn = true : this.hasLoggedIn = false;
+      if (user !== null) {
+        this.hasLoggedIn = true;
+        this.user = {
+          displayName: user.displayName,
+          email: user.email,
+          emailVerified: user.emailVerified,
+          phone: user.phone,
+          phoneVerified: user.phoneVerified,
+          photoURL: user.photoURL
+        };
+      } else {
+        this.hasLoggedIn = false;
+      }
     });
   }
 
@@ -57,5 +73,11 @@ export class SettingPage {
     logoutActionSheet.present().then(value => {
       return value;
     })
+  }
+
+  openPage(page: string) {
+    this.navCtrl.push(page).then(value => {
+      return value;
+    });
   }
 }
