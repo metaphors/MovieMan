@@ -24,18 +24,18 @@
       </ion-avatar>
     </button>
 
-    <button ion-item>
+    <button ion-item (click)="openPage(editUserNamePage)">
       <ion-label>昵称</ion-label>
       <span class="item-end-span" item-end>{{user.displayName}}</span>
     </button>
 
-    <button ion-item>
+    <button ion-item (click)="openPage(editPhonePage)">
       <ion-label>绑定手机号</ion-label>
       <span class="item-end-span" item-end *ngIf="user.phone === ''">未绑定</span>
       <span class="item-end-span" item-end *ngIf="user.phone !== ''">{{user.phone}}</span>
     </button>
 
-    <button ion-item>
+    <button ion-item (click)="openPage(editPasswordPage)">
       <ion-label>帐号密码</ion-label>
       <span class="item-end-span" item-end>修改</span>
     </button>

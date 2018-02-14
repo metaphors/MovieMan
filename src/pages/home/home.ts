@@ -25,6 +25,8 @@ export class HomePage {
   @ViewChild('hotMoviesSlides') hotMoviesSlides: Slides;
   @ViewChild('comingMoviesSlides') comingMoviesSlides: Slides;
 
+  informationDetailPage = 'InformationDetailPage';
+
   offset: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public informationProvider: InformationProvider, public parametersProvider: ParametersProvider) {
@@ -83,5 +85,11 @@ export class HomePage {
   openMoviesPage(type: string) {
     this.parametersProvider.setParameterType(type, true);
     this.navCtrl.parent.select(1);
+  }
+
+  openInformationDetailPage() {
+    this.navCtrl.push(this.informationDetailPage).then(value => {
+      return value;
+    });
   }
 }

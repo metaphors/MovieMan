@@ -16,6 +16,10 @@ import * as wilddog from "wilddog";
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
+  editUserNamePage = 'EditUsernamePage';
+  editPhonePage = 'EditPhonePage';
+  editPasswordPage = 'EditPasswordPage';
+
   user: { displayName: string, email: string, emailVerified: boolean, phone: string, phoneVerified: boolean, photoURL: string };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController) {
@@ -51,6 +55,12 @@ export class ProfilePage {
       }, {text: '取消', role: 'cancel'}]
     });
     changeAvatarActionSheet.present().then(value => {
+      return value;
+    });
+  }
+
+  openPage(page: string) {
+    this.navCtrl.push(page).then(value => {
       return value;
     });
   }

@@ -83,7 +83,8 @@
 
     <ion-list-header class="information-list-header">电影资讯</ion-list-header>
 
-    <ion-item class="information-item" *ngFor="let information of informationProvider.information">
+    <ion-item class="information-item" *ngFor="let information of informationProvider.information" tappable
+              (click)="openInformationDetailPage()">
       <div *ngIf="information['images'].length===0">
         {{information['title']}}
       </div>

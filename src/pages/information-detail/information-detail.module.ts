@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { InformationDetailPage } from './information-detail';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {InformationDetailPage} from './information-detail';
 
 @NgModule({
   declarations: [
@@ -10,4 +10,5 @@ import { InformationDetailPage } from './information-detail';
     IonicPageModule.forChild(InformationDetailPage),
   ],
 })
-export class InformationDetailPageModule {}
+export class InformationDetailPageModule {
+}
