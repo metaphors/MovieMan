@@ -1,5 +1,14 @@
 page-setting {
+  .scroll-content {
+    background-color: #f8f8f8;
+    text-align: center;
+  }
+
   .back-button {
     color: color($colors, dark);
+  }
+
+  .logout-button {
+    width: 90%;
   }
 }

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+
+import * as wilddog from "wilddog";
 
 /**
  * Generated class for the SettingPage page.
@@ -14,8 +16,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'setting.html',
 })
 export class SettingPage {
+  hasLoggedIn: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+    this.getLoginState();
   }
 
+  getLoginState() {
+    wilddog.auth().onAuthStateChanged(user => {
+      user !== null ? this.hasLoggedIn = true : this.hasLoggedIn = false;
+    });
+  }
+
+  onLogout() {
+    wilddog.auth().signOut().then(() => {
+      this.navCtrl.popToRoot().then(value => {
+        return value;
+      })
+    }, error => {
+      this.presentToast(error.name + ': ' + error.message);
+    });
+  }
+
+  presentToast(message: string) {
+    let toast = this.toastCtrl.create({message: message, duration: 1500, dismissOnPageChange: true});
+    toast.present().then(value => {
+      return value;
+    });
+  }
 }

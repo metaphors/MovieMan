@@ -12,7 +12,6 @@ import {MoviesProvider} from '../providers/movies/movies';
 import {GeolocationProvider} from '../providers/geolocation/geolocation';
 import {InformationProvider} from '../providers/information/information';
 import {ParametersProvider} from '../providers/parameters/parameters';
-import {UserProvider} from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,6 @@ import {UserProvider} from '../providers/user/user';
       GeolocationProvider,
       InformationProvider,
       ParametersProvider,
-      UserProvider
     ]
 })
 

@@ -84,6 +84,18 @@ export class LoginPage {
 
   }
 
+  onWeiboLogin() {
+    this.presentToast('微博第三方登录功能暂未开通...');
+  }
+
+  onWechatLogin() {
+    this.presentToast('微信第三方登录功能暂未开通...');
+  }
+
+  onQQLogin() {
+    this.presentToast('QQ第三方登录功能暂未开通...');
+  }
+
   presentToast(message: string) {
     let toast = this.toastCtrl.create({message: message, duration: 1500, dismissOnPageChange: true});
     toast.present().then(value => {

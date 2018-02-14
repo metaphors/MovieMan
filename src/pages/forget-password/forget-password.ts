@@ -30,7 +30,7 @@ export class ForgetPasswordPage {
       this.presentToast('邮箱地址格式不正确');
     } else {
       wilddog.auth().sendPasswordResetEmail(this.email).then(() => {
-        this.presentToast('已发送密码重置邮件到您的注册邮箱，请立即点击密码重置链接修改密码！');
+        this.presentConfirmToast('已发送密码重置邮件到您的注册邮箱，请立即点击密码重置链接修改密码！');
       }, error => {
         this.presentToast(error.name + ': ' + error.message);
       });
@@ -46,6 +46,11 @@ export class ForgetPasswordPage {
 
   presentConfirmToast(message: string) {
     let toast = this.toastCtrl.create({message: message, showCloseButton: true, closeButtonText: "确认"});
+    toast.onDidDismiss(() => {
+      this.navCtrl.pop().then(value => {
+        return value;
+      });
+    });
     toast.present().then(value => {
       return value;
     });

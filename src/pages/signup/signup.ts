@@ -33,9 +33,15 @@ export class SignupPage {
     } else if (this.signup.password.length < 6 || this.signup.password.length > 32) {
       this.presentToast('密码长度必须在 6 到 32 位之间');
     } else {
-      wilddog.auth().createUserWithEmailAndPassword(this.signup.email, this.signup.password).then(() => {
-        this.navCtrl.popToRoot().then(value => {
-          return value;
+      wilddog.auth().createUserWithEmailAndPassword(this.signup.email, this.signup.password).then(user => {
+        user.updateProfile({'displayName': user.email}).then(() => {
+        }, error => {
+          this.presentToast(error.name + ': ' + error.message);
+        });
+        user.sendEmailVerification().then(() => {
+          this.presentConfirmToast('已发送邮箱验证邮件到您的注册邮箱，请立即点击邮箱验证链接完成验证！');
+        }, error => {
+          this.presentToast(error.name + ': ' + error.message);
         });
       }, error => {
         this.presentToast(error.name + ': ' + error.message);
@@ -45,6 +51,18 @@ export class SignupPage {
 
   presentToast(message: string) {
     let toast = this.toastCtrl.create({message: message, duration: 1500, dismissOnPageChange: true});
+    toast.present().then(value => {
+      return value;
+    });
+  }
+
+  presentConfirmToast(message: string) {
+    let toast = this.toastCtrl.create({message: message, showCloseButton: true, closeButtonText: "确认"});
+    toast.onDidDismiss(() => {
+      this.navCtrl.popToRoot().then(value => {
+        return value;
+      });
+    });
     toast.present().then(value => {
       return value;
     });

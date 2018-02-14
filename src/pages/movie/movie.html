@@ -50,7 +50,7 @@
 
         <ion-list *ngSwitchCase="'hot'">
           <ion-item *ngFor="let movie of moviesProvider.hotMovies">
-            <div class="movie-img" [ngStyle]="{'background-image': 'url(' + movie['img'] + ')'}" item-start></div>
+            <div class="movie-img" [style.background-image]="'url(' + movie['img'] + ')'" item-start></div>
 
             <h2 class="movie-name">
               {{movie['nm']}}
@@ -91,7 +91,7 @@
             <ion-slides slidesPerView="1.7" #innerTrailersSlides>
               <ion-slide *ngFor="let trailer of moviesProvider.trailers" tappable
                          (click)="playTrailer(trailer['img'],trailer['url'],trailer['originName'],trailer['movieName'])">
-                <div class="trailer-img" [ngStyle]="{'background-image': 'url(' + trailer['img'] + ')'}">
+                <div class="trailer-img" [style.background-image]="'url(' + trailer['img'] + ')'">
                   <div class="trailer-img-cover">
                     <h3 class="trailer-movie-name">{{trailer['movieName']}}</h3>
                     <p class="trailer-origin-name">{{trailer['originName']}}</p>
@@ -112,7 +112,7 @@
             <ion-slides slidesPerView="3.3" #innerExpectedMoviesSlides>
               <ion-slide *ngFor="let movie of moviesProvider.expectedMovies">
                 <div class="expected-movie-img"
-                     [ngStyle]="{'background-image': 'url(' + 'http://p0.meituan.net/165.220'+movie['img'].substring(25) + ')'}">
+                     [style.background-image]="'url(' + 'http://p0.meituan.net/165.220'+movie['img'].substring(25) + ')'">
                   <div class="expected-movie-img-cover">
                     <p class="expected-movie-wish">{{movie['wish']}} 人想看</p>
                   </div>
@@ -128,7 +128,7 @@
           <ion-item-divider color="light"></ion-item-divider>
 
           <ion-item *ngFor="let movie of moviesProvider.comingMovies">
-            <div class="movie-img" [ngStyle]="{'background-image': 'url(' + movie['img'] + ')'}" item-start></div>
+            <div class="movie-img" [style.background-image]="'url(' + movie['img'] + ')'" item-start></div>
 
             <h2 class="movie-name">{{movie['nm']}}</h2>
             <h3 *ngIf="movie['cat']!==''">{{movie['cat']}}</h3>

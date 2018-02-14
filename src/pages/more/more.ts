@@ -25,9 +25,11 @@ export class MorePage {
   profilePage = 'ProfilePage';
 
   hasLoggedIn: boolean;
+  user: { displayName: string, email: string, emailVerified: boolean, phone: string, phoneVerified: boolean, photoURL: string };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geolocationProvider: GeolocationProvider) {
-    this.getLoginStatus();
+    this.user = {displayName: '', email: '', emailVerified: false, phone: '', phoneVerified: false, photoURL: ''};
+    this.getLoginState();
   }
 
   openPage(page: string) {
@@ -36,7 +38,22 @@ export class MorePage {
     });
   }
 
-  getLoginStatus() {
-
+  getLoginState() {
+    wilddog.auth().onAuthStateChanged(user => {
+      if (user !== null) {
+        this.hasLoggedIn = true;
+        this.user = {
+          displayName: user.displayName,
+          email: user.email,
+          emailVerified: user.emailVerified,
+          phone: user.phone,
+          phoneVerified: user.phoneVerified,
+          photoURL: user.photoURL
+        };
+        console.log("user", this.user);
+      } else {
+        this.hasLoggedIn = false;
+      }
+    });
   }
 }

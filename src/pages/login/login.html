@@ -53,13 +53,13 @@
       <div class="third-party-login">
         <hr/>
         <ion-label class="third-party-login-text" color="gray">-第三方登录-</ion-label>
-        <button ion-button icon-only clear>
+        <button ion-button icon-only clear (click)="onWeiboLogin()">
           <ion-icon name="weibo"></ion-icon>
         </button>
-        <button ion-button icon-only clear>
+        <button ion-button icon-only clear (click)="onWechatLogin()">
           <ion-icon name="wechat"></ion-icon>
         </button>
-        <button ion-button icon-only clear>
+        <button ion-button icon-only clear (click)="onQQLogin()">
           <ion-icon name="qq"></ion-icon>
         </button>
       </div>

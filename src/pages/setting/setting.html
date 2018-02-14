@@ -14,5 +14,7 @@
 
 
 <ion-content>
-
+  <button class="logout-button" ion-button round color="orangered" *ngIf="hasLoggedIn" (click)="onLogout()">
+    退出登录
+  </button>
 </ion-content>

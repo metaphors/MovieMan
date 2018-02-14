@@ -28,7 +28,7 @@
   <ion-list>
     <ion-item class="user-item" *ngIf="!hasLoggedIn" tappable (click)="openPage(loginPage)">
       <ion-avatar item-start>
-        <div class="avatar"></div>
+        <div class="avatar" [style.background-image]="'url(assets/imgs/avatar/default.jpg)'"></div>
       </ion-avatar>
       <ion-label color="white">立即登录</ion-label>
       <ion-icon name="arrow-forward" color="white" item-end></ion-icon>
@@ -36,9 +36,11 @@
 
     <ion-item class="user-item" *ngIf="hasLoggedIn" tappable (click)="openPage(profilePage)">
       <ion-avatar item-start>
-        <div class="avatar"></div>
+        <div class="avatar"
+             [style.background-image]="user.photoURL === '' ? 'url(assets/imgs/avatar/default.jpg)' : 'url(' + user.photoURL + ')'">
+        </div>
       </ion-avatar>
-      <ion-label color="white">立即登录</ion-label>
+      <ion-label color="white">{{user.displayName}}</ion-label>
       <ion-icon name="arrow-forward" color="white" item-end></ion-icon>
     </ion-item>
   </ion-list>
