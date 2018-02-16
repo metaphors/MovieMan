@@ -8,11 +8,21 @@
 
   <ion-navbar>
     <ion-title>昵称</ion-title>
+
+    <ion-buttons end>
+      <button ion-button color="dark" (click)="onUpdateUserDisplayName()">
+        完成
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" clearInput="true" [(ngModel)]="displayName"></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>

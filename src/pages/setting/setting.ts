@@ -23,6 +23,9 @@ export class SettingPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
     this.user = {displayName: '', email: '', emailVerified: false, phone: '', phoneVerified: false, photoURL: ''};
+  }
+
+  ionViewWillEnter() {
     this.getLoginState();
   }
 

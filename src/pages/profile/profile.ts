@@ -24,10 +24,13 @@ export class ProfilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController) {
     this.user = {displayName: '', email: '', emailVerified: false, phone: '', phoneVerified: false, photoURL: ''};
-    this.getLoginState();
   }
 
-  getLoginState() {
+  ionViewWillEnter() {
+    this.getUserData();
+  }
+
+  getUserData() {
     wilddog.auth().onAuthStateChanged(user => {
       if (user !== null) {
         this.user = {

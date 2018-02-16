@@ -29,6 +29,9 @@ export class MorePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geolocationProvider: GeolocationProvider) {
     this.user = {displayName: '', email: '', emailVerified: false, phone: '', phoneVerified: false, photoURL: ''};
+  }
+
+  ionViewWillEnter() {
     this.getLoginState();
   }
 
