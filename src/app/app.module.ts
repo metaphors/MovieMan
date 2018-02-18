@@ -5,6 +5,8 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {IonicStorageModule} from "@ionic/storage";
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
+import {Camera} from "@ionic-native/camera";
+import {FileTransfer} from "@ionic-native/file-transfer";
 
 import {MyApp} from './app.component';
 
@@ -38,8 +40,10 @@ import {ParametersProvider} from '../providers/parameters/parameters';
     ],
   providers:
     [
-      StatusBar,
       SplashScreen,
+      StatusBar,
+      Camera,
+      FileTransfer,
       {provide: ErrorHandler, useClass: IonicErrorHandler},
       MoviesProvider,
       GeolocationProvider,
