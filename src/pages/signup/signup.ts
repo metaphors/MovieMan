@@ -34,10 +34,6 @@ export class SignupPage {
       this.presentToast('密码长度必须在 6 到 32 位之间');
     } else {
       wilddog.auth().createUserWithEmailAndPassword(this.signup.email, this.signup.password).then(user => {
-        user.updateProfile({'displayName': user.email}).then(() => {
-        }, error => {
-          this.presentToast(error.name + ': ' + error.message);
-        });
         user.sendEmailVerification().then(() => {
           this.presentConfirmToast('已发送邮箱验证邮件到您的注册邮箱，请立即点击邮箱验证链接完成验证！');
         }, error => {

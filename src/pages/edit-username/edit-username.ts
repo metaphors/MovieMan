@@ -34,15 +34,21 @@ export class EditUsernamePage {
   }
 
   onUpdateUserDisplayName() {
-    wilddog.auth().onAuthStateChanged(user => {
-      user.updateProfile({'displayName': this.displayName}).then(() => {
-        this.navCtrl.pop().then(value => {
-          return value;
+    if (this.displayName === '') {
+      this.presentToast('输入信息不能为空');
+    } else if (this.displayName.length > 20) {
+      this.presentToast('昵称长度必须小于 20 位');
+    } else {
+      wilddog.auth().onAuthStateChanged(user => {
+        user.updateProfile({'displayName': this.displayName}).then(() => {
+          this.navCtrl.pop().then(value => {
+            return value;
+          });
+        }, error => {
+          this.presentToast(error.name + ': ' + error.message);
         });
-      }, error => {
-        this.presentToast(error.name + ': ' + error.message);
       });
-    });
+    }
   }
 
   presentToast(message: string) {
