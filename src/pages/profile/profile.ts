@@ -84,10 +84,16 @@ export class ProfilePage {
     };
 
     let url: string = 'https://sm.ms/api/upload?smfile=' + fileURI;
-    console.log(url);
 
     fileTransferObject.upload(fileURI, url, fileUploadOptions).then(data => {
-      console.log(data);
+      console.log(data["response"]);
+      wilddog.auth().onAuthStateChanged(user => {
+        user.updateProfile({'photoURL': JSON.parse(data["response"])["data"]["url"]}).then(() => {
+          this.getUserData();
+        }, error => {
+          this.presentToast(error.name + ': ' + error.message);
+        });
+      });
     }, error => {
       console.log(error);
     });
