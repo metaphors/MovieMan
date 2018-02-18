@@ -80,7 +80,7 @@ export class ProfilePage {
       mimeType: 'image/jpeg',
       params: {},
       chunkedMode: true,
-      headers: {}
+      headers: {'Content-Type': 'multipart/form-data'}
     };
 
     let url: string = 'https://sm.ms/api/upload?smfile=' + fileURI;
