@@ -43,6 +43,7 @@
     "sw-toolbox": "3.6.0",
     "videogular2": "^6.0.1",
     "wilddog": "^2.5.17",
+    "wilddog-sms": "^1.0.1",
     "zone.js": "0.8.18"
   },
   "devDependencies": {

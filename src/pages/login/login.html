@@ -18,7 +18,8 @@
   <ion-toolbar mode="md">
     <ion-segment mode="md" color="orangered" [(ngModel)]="loginMode">
       <ion-segment-button value="email" (ionSelect)="goToSlide(0)">邮箱密码登录</ion-segment-button>
-      <ion-segment-button value="phone" (ionSelect)="goToSlide(1)">手机号快捷登录</ion-segment-button>
+      <!--<ion-segment-button value="phone" (ionSelect)="goToSlide(1)">手机号快捷登录</ion-segment-button>-->
+      <ion-segment-button value="phone" (ionSelect)="goToSlide(1)">手机密码登录</ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 
@@ -67,15 +68,35 @@
 
     <ion-slide>
       <ion-list>
+        <!--<ion-item>-->
+        <!--<ion-label>手机号</ion-label>-->
+        <!--<ion-input type="tel" placeholder="仅支持中国大陆号码" [(ngModel)]="phoneLogin.phone"></ion-input>-->
+        <!--<button class="get-verification-button" ion-button item-end small color="light">获取验证码</button>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item>-->
+        <!--<ion-label>验证码</ion-label>-->
+        <!--<ion-input type="number" placeholder="请输入验证码" [(ngModel)]="phoneLogin.verification"></ion-input>-->
+        <!--</ion-item>-->
+
         <ion-item>
-          <ion-label>手机号</ion-label>
-          <ion-input type="tel" placeholder="仅支持中国大陆手机号" [(ngModel)]="phoneLogin.phone"></ion-input>
-          <button class="get-verification-button" ion-button item-end small color="light">获取验证码</button>
+          <ion-label>手机</ion-label>
+          <ion-input type="tel" placeholder="仅支持中国大陆号码" clearInput="true" [(ngModel)]="phoneLogin.phone"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label>验证码</ion-label>
-          <ion-input type="number" placeholder="请输入验证码" [(ngModel)]="phoneLogin.verification"></ion-input>
+          <ion-label>密码</ion-label>
+          <ion-input [type]="isClearTextPassword2?'text':'password'" placeholder="请输入密码" clearInput="true"
+                     clearOnEdit="false" [(ngModel)]="phoneLogin.password">
+          </ion-input>
+          <button ion-button icon-only clear color="dark" item-end *ngIf="!isClearTextPassword2"
+                  (click)="toggleClearTextPassword2()">
+            <ion-icon name="eye"></ion-icon>
+          </button>
+          <button ion-button icon-only clear color="dark" item-end *ngIf="isClearTextPassword2"
+                  (click)="toggleClearTextPassword2()">
+            <ion-icon name="eye-off"></ion-icon>
+          </button>
         </ion-item>
       </ion-list>
 

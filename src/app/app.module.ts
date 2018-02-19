@@ -14,6 +14,7 @@ import {MoviesProvider} from '../providers/movies/movies';
 import {GeolocationProvider} from '../providers/geolocation/geolocation';
 import {InformationProvider} from '../providers/information/information';
 import {ParametersProvider} from '../providers/parameters/parameters';
+import {WilddogProvider} from '../providers/wilddog/wilddog';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {ParametersProvider} from '../providers/parameters/parameters';
       GeolocationProvider,
       InformationProvider,
       ParametersProvider,
+      WilddogProvider,
     ]
 })
 

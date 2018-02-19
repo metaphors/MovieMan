@@ -8,11 +8,33 @@
 
   <ion-navbar>
     <ion-title>绑定手机号</ion-title>
+
+    <ion-buttons end>
+      <button ion-button color="dark" (click)="onUpdateUserPhone()">
+        完成
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+  <ion-list>
+    <!--<ion-item>-->
+    <!--<ion-label>手机号</ion-label>-->
+    <!--<ion-input type="tel" placeholder="仅支持中国大陆号码" [(ngModel)]="edit.phone"></ion-input>-->
+    <!--<button class="get-verification-button" ion-button item-end small color="light" (click)="onSendPhoneVerification()">获取验证码</button>-->
+    <!--</ion-item>-->
 
+    <!--<ion-item>-->
+    <!--<ion-label>验证码</ion-label>-->
+    <!--<ion-input type="number" placeholder="请输入验证码" [(ngModel)]="edit.verification"></ion-input>-->
+    <!--</ion-item>-->
+
+    <ion-item>
+      <ion-label>手机号</ion-label>
+      <ion-input type="tel" placeholder="仅支持中国大陆号码" [(ngModel)]="phone"></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -3,6 +3,8 @@ import {Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
+import {WilddogProvider} from "../providers/wilddog/wilddog";
+
 import * as wilddog from 'wilddog';
 
 @Component({
@@ -11,16 +13,14 @@ import * as wilddog from 'wilddog';
 export class MyApp {
   rootPage: any = 'TabsPage';
 
-  appId: string = "wd8837557731vfogoa";
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public wilddogProvider: WilddogProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
 
-      let config = {authDomain: this.appId + ".wilddog.com"};
+      let config = {authDomain: this.wilddogProvider.appId + ".wilddog.com"};
       wilddog.initializeApp(config);
     });
   }

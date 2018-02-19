@@ -23,16 +23,20 @@ export class LoginPage {
 
   loginMode: string;
   isClearTextPassword: boolean;
+  isClearTextPassword2: boolean;
 
   emailLogin: { email: string, password: string };
-  phoneLogin: { phone: string, verification: string };
+  // phoneLogin: { phone: string, verification: string };
+  phoneLogin: { phone: string, password: string };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
     this.loginMode = "email";
     this.isClearTextPassword = false;
+    this.isClearTextPassword2 = false;
 
     this.emailLogin = {email: '', password: ''};
-    this.phoneLogin = {phone: '', verification: ''};
+    // this.phoneLogin = {phone: '', verification: ''};
+    this.phoneLogin = {phone: '', password: ''};
   }
 
   ngAfterViewInit() {
@@ -66,6 +70,10 @@ export class LoginPage {
     this.isClearTextPassword ? this.isClearTextPassword = false : this.isClearTextPassword = true;
   }
 
+  toggleClearTextPassword2() {
+    this.isClearTextPassword2 ? this.isClearTextPassword2 = false : this.isClearTextPassword2 = true;
+  }
+
   onEmailLogin() {
     if (this.emailLogin.email === '' || this.emailLogin.password === '') {
       this.presentToast('输入信息不能为空');
@@ -81,7 +89,17 @@ export class LoginPage {
   }
 
   onPhoneLogin() {
-
+    if (this.phoneLogin.phone === '' || this.phoneLogin.password === '') {
+      this.presentToast('输入信息不能为空');
+    } else {
+      wilddog.auth().signInWithPhoneAndPassword(this.phoneLogin.phone, this.phoneLogin.password).then(() => {
+        this.navCtrl.popToRoot().then(value => {
+          return value;
+        });
+      }, error => {
+        this.presentToast(error.name + ': ' + error.message);
+      });
+    }
   }
 
   onWeiboLogin() {
