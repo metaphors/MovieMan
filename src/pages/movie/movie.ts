@@ -13,6 +13,7 @@ import {
 import {MoviesProvider} from "../../providers/movies/movies";
 import {GeolocationProvider} from "../../providers/geolocation/geolocation";
 import {ParametersProvider} from "../../providers/parameters/parameters";
+import {ThemeProvider} from "../../providers/theme/theme";
 
 /**
  * Generated class for the MoviePage page.
@@ -42,13 +43,17 @@ export class MoviePage {
   offset: any = {"hot": 0, "coming": 0};
   limit: number = 12;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public parametersProvider: ParametersProvider) {
+  theme: boolean;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public parametersProvider: ParametersProvider, public themeProvider: ThemeProvider) {
     this.moviesProvider.getMovies("init", "hot", this.offset["hot"], this.limit);
     this.moviesProvider.getMovies("init", "coming", this.offset["hot"], this.limit);
     this.moviesProvider.getTrailers();
     this.moviesProvider.getExpectedMovies();
 
     this.geolocationProvider.getCurrentCity();
+
+    this.getActiveTheme();
   }
 
   ngAfterViewInit() {
@@ -66,6 +71,12 @@ export class MoviePage {
     } else if (this.type === "coming") {
       this.goToSlide(1);
     }
+  }
+
+  getActiveTheme() {
+    this.themeProvider.getActiveTheme().subscribe(theme => {
+      this.theme = theme;
+    });
   }
 
   scrollToTop() {

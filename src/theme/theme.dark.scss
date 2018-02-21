@@ -1,0 +1,70 @@
+.dark-theme {
+  .toolbar-background {
+    background-color: #151515;
+  }
+
+  .toolbar-title {
+    color: #fff;
+  }
+
+  .back-button {
+    color: #fff;
+  }
+
+  .button-inner {
+    color: #fff;
+  }
+
+  .tabbar {
+    background-color: #151515 !important;
+  }
+
+  .list {
+    background-color: #151515;
+  }
+
+  .list > .item:last-child {
+    border-bottom-color: #000;
+  }
+
+  .item {
+    background-color: #151515;
+    color: #fff;
+  }
+
+  .item-ios.activated {
+    background-color: #191919;
+  }
+
+  .item-inner {
+    border-bottom-color: #000 !important;
+  }
+
+  .item-divider {
+    background-color: #000;
+  }
+
+  ion-refresher {
+    background-color: #191919;
+  }
+
+  ion-infinite-scroll {
+    background-color: #191919;
+  }
+
+  .content-ios {
+    background-color: #191919;
+  }
+
+  .scroll-content {
+    background-color: #191919;
+  }
+
+  .toolbar-background-md {
+    background-color: #151515 !important;
+  }
+
+  .segment-md {
+    background-color: #151515;
+  }
+}

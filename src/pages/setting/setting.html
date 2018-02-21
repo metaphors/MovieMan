@@ -26,10 +26,10 @@
     </ion-item>
   </ion-list>
 
-  <ion-list [style.margin-top]="hasLoggedIn === true ? '10px' : '0'">
+  <ion-list class="below-list">
     <ion-item>
       <ion-label>夜间模式</ion-label>
-      <ion-toggle color="orangered"></ion-toggle>
+      <ion-toggle color="orangered" [checked]="theme" (ionChange)="toggleTheme()"></ion-toggle>
     </ion-item>
   </ion-list>
 

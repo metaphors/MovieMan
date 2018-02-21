@@ -54,13 +54,23 @@
 
             <h2 class="movie-name">
               {{movie['nm']}}
-              <img class="movie-version" *ngIf="movie['preSale']===1" src="assets/imgs/movie-version/presale.png"
-                   alt="presale"/>
-              <img class="movie-version" *ngIf="movie['preSale']===0 && movie['3d']===false"
+
+              <img class="movie-version" *ngIf="theme && movie['preSale']===1"
+                   src="assets/imgs/movie-version/presale-dark.png" alt="presale"/>
+              <img class="movie-version" *ngIf="theme && movie['preSale']===0 && movie['3d']===false"
+                   src="assets/imgs/movie-version/2D-dark.png" alt="2D"/>
+              <img class="movie-version" *ngIf="theme && movie['preSale']===0 && movie['3d']===true"
+                   src="assets/imgs/movie-version/3D-dark.png" alt="3D"/>
+              <img class="movie-version" *ngIf="theme && movie['preSale']===0 && movie['imax']===true"
+                   src="assets/imgs/movie-version/IMAX-dark.png" alt="IMAX"/>
+
+              <img class="movie-version" *ngIf="!theme && movie['preSale']===1"
+                   src="assets/imgs/movie-version/presale.png" alt="presale"/>
+              <img class="movie-version" *ngIf="!theme && movie['preSale']===0 && movie['3d']===false"
                    src="assets/imgs/movie-version/2D.png" alt="2D"/>
-              <img class="movie-version" *ngIf="movie['preSale']===0 && movie['3d']===true"
+              <img class="movie-version" *ngIf="!theme && movie['preSale']===0 && movie['3d']===true"
                    src="assets/imgs/movie-version/3D.png" alt="3D"/>
-              <img class="movie-version" *ngIf="movie['preSale']===0 && movie['imax']===true"
+              <img class="movie-version" *ngIf="!theme && movie['preSale']===0 && movie['imax']===true"
                    src="assets/imgs/movie-version/IMAX.png" alt="IMAX"/>
             </h2>
             <h3>{{movie['cat']}}</h3>

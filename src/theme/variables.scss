@@ -78,7 +78,10 @@ $action-sheet-ios-button-font-size: 1.7rem;
 // so that the above variables are used and Ionic's
 // default are overridden.
 
-@import "ionic.theme.default";
+//@import "ionic.theme.default";
+//@import "ionic.theme.dark";
+@import "theme.default";
+@import "theme.dark";
 
 // Ionicons
 // --------------------------------------------------

@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ActionSheetController, ToastController} from 'ionic-angular';
 
+import {ThemeProvider} from "../../providers/theme/theme";
+
 import * as wilddog from "wilddog";
 
 /**
@@ -21,8 +23,12 @@ export class SettingPage {
   hasLoggedIn: boolean;
   user: { displayName: string, email: string, emailVerified: boolean, phone: string, phoneVerified: boolean, photoURL: string };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
+  theme: boolean;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public themeProvider: ThemeProvider) {
     this.user = {displayName: '', email: '', emailVerified: false, phone: '', phoneVerified: false, photoURL: ''};
+
+    this.getActiveTheme();
   }
 
   ionViewWillEnter() {
@@ -45,6 +51,19 @@ export class SettingPage {
         this.hasLoggedIn = false;
       }
     });
+  }
+
+  getActiveTheme() {
+    this.themeProvider.getActiveTheme().subscribe(theme => {
+      this.theme = theme;
+    });
+  }
+
+  toggleTheme() {
+    if (!this.theme) {
+      this.presentToast('退出应用后夜间模式也将退出');
+    }
+    this.themeProvider.setActiveTheme(!this.theme);
   }
 
   onLogout() {
