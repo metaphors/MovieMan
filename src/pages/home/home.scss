@@ -147,9 +147,13 @@ page-home {
 
   .information-online-time {
     float: left;
+    width: 50%;
+    text-align: left;
   }
 
   .information-view-count {
     float: right;
+    width: 50%;
+    text-align: right;
   }
 }
