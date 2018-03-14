@@ -87,8 +87,8 @@ export class HomePage {
     this.navCtrl.parent.select(1);
   }
 
-  openInformationDetailPage() {
-    this.navCtrl.push(this.informationDetailPage).then(value => {
+  openInformationDetailPage(contentId: number) {
+    this.navCtrl.push(this.informationDetailPage, {'contentId': contentId}).then(value => {
       return value;
     });
   }
