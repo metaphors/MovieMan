@@ -1,5 +1,49 @@
 page-cinema {
   .scroll-content {
-    background-color: #f8f8f8;
+    background-color: #f8f8f8 !important;
+  }
+
+  .select-toolbar {
+    padding: 0;
+  }
+
+  .select-toolbar .toolbar-background {
+    background-color: white;
+  }
+
+  ion-col {
+    padding: 0 !important;
+  }
+
+  ion-select {
+    max-width: 100%;
+  }
+
+  .select-text {
+    color: color($colors, gray);
+  }
+
+  .list {
+    margin-bottom: 0;
+  }
+
+  .cinema-name {
+    font-size: 1.6rem;
+    margin-bottom: 11px;
+  }
+
+  .cinema-sell-price {
+    color: color($colors, orangered);
+  }
+
+  .cinema-sell-price-suffix {
+    color: color($colors, gray);
+    font-size: 1.2rem;
+  }
+
+  .cinema-version {
+    margin-top: 11px;
+    height: 1.5rem;
+    vertical-align: middle;
   }
 }

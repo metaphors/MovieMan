@@ -65,6 +65,15 @@ $list-ios-header-border-bottom: 0;
 $action-sheet-ios-button-text-color: color($colors, dark);
 $action-sheet-ios-button-font-size: 1.7rem;
 
+$radio-ios-color-on: color($colors, orangered);
+
+$popover-ios-width: 100%;
+$popover-ios-max-height: 50%;
+$popover-ios-border-radius: 0;
+$popover-ios-arrow-background: rgba(255, 255, 255, 0);
+
+$select-popover-list-margin-top: 0;
+
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here

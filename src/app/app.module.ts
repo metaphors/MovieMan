@@ -16,6 +16,7 @@ import {InformationProvider} from '../providers/information/information';
 import {ParametersProvider} from '../providers/parameters/parameters';
 import {WilddogProvider} from '../providers/wilddog/wilddog';
 import {ThemeProvider} from '../providers/theme/theme';
+import {CinemasProvider} from '../providers/cinemas/cinemas';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {ThemeProvider} from '../providers/theme/theme';
       ParametersProvider,
       WilddogProvider,
       ThemeProvider,
+      CinemasProvider,
     ]
 })
 

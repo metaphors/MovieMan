@@ -1,5 +1,5 @@
 .dark-theme {
-  .toolbar-background {
+  .toolbar-background, .select-toolbar .toolbar-background {
     background-color: #151515;
   }
 
@@ -57,7 +57,7 @@
   }
 
   .scroll-content {
-    background-color: #191919;
+    background-color: #191919 !important;
   }
 
   .toolbar-background-md {
@@ -71,4 +71,6 @@
   #information-detail-title, #information-detail-content p, #information-detail-content span, #information-detail-content h1 {
     color: #fff !important;
   }
+
+  $popover-ios-background:#151515;
 }

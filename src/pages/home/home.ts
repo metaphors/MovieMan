@@ -30,12 +30,12 @@ export class HomePage {
   offset: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public informationProvider: InformationProvider, public parametersProvider: ParametersProvider) {
-    this.moviesProvider.getMovies("init", "hot", 0, 12);
-    this.moviesProvider.getHotMoviesTotal();
+    this.geolocationProvider.getCurrentCity();
+
+    this.moviesProvider.getMovies("init", this.geolocationProvider.currentCityId, "hot", 0, 12);
+    this.moviesProvider.getHotMoviesTotal(this.geolocationProvider.currentCityId);
     this.moviesProvider.getExpectedMovies();
     this.moviesProvider.getExpectedMoviesTotal();
-
-    this.geolocationProvider.getCurrentCity();
 
     this.informationProvider.getInformation("init", this.offset);
   }
@@ -53,8 +53,8 @@ export class HomePage {
     console.log("do refresh");
     setTimeout(() => {
       this.offset = 0;
-      this.moviesProvider.getMovies("init", "hot", 0, 12);
-      this.moviesProvider.getHotMoviesTotal();
+      this.moviesProvider.getMovies("init", this.geolocationProvider.currentCityId, "hot", 0, 12);
+      this.moviesProvider.getHotMoviesTotal(this.geolocationProvider.currentCityId);
       this.moviesProvider.getExpectedMovies();
       this.moviesProvider.getExpectedMoviesTotal();
       this.informationProvider.getInformation("init", this.offset);

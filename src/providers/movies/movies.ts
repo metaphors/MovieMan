@@ -25,8 +25,8 @@ export class MoviesProvider {
 
   }
 
-  getMovies(method: string, type: string, offset: number, limit: number) {
-    let moviesUrl: string = "https://m.maoyan.com/movie/list.json?type=" + type + "&offset=" + offset + "&limit=" + limit;
+  getMovies(method: string, cityId: number, type: string, offset: number, limit: number) {
+    let moviesUrl: string = "https://m.maoyan.com/movie/list.json?ci=" + cityId + "&type=" + type + "&offset=" + offset + "&limit=" + limit;
     this.http.get(moviesUrl).subscribe(data => {
       if (method === "init") {
         if (type === "hot") {
@@ -66,8 +66,8 @@ export class MoviesProvider {
     });
   }
 
-  getHotMoviesTotal() {
-    let hotMoviesTotalUrl: string = "http://m.maoyan.com/movie/list.json?type=hot&offset=0&limit=100";
+  getHotMoviesTotal(cityId: number) {
+    let hotMoviesTotalUrl: string = "http://m.maoyan.com/movie/list.json?ci=" + cityId + "&type=hot&offset=0&limit=100";
     this.http.get(hotMoviesTotalUrl).subscribe(data => {
       this.hotMoviesTotal = data["data"]["movies"].length;
       console.log("hot movies total", this.hotMoviesTotal);

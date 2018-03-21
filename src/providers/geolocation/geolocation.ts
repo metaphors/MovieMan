@@ -11,6 +11,7 @@ import {Injectable} from '@angular/core';
 export class GeolocationProvider {
 
   currentCity: string;
+  currentCityId: number;
 
   constructor(public http: HttpClient) {
 
@@ -27,7 +28,9 @@ export class GeolocationProvider {
         let meituanLocatingUrl: string = "http://api.mobile.meituan.com/group/v1/city/latlng/" + latitude + "," + longitude + "?tag=0";
         this.http.get(meituanLocatingUrl).subscribe(data => {
           this.currentCity = data["data"]["city"];
+          this.currentCityId = data["data"]["id"];
           console.log("current city", this.currentCity);
+          console.log("current city id", this.currentCityId);
         });
       });
     });

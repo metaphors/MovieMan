@@ -30,3 +30,44 @@
 .ion-ios-qq {
   content: url("../assets/icon/third-party/qq.png");
 }
+
+.popover-select {
+  ion-backdrop {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)) !important;
+  }
+
+  .popover-content {
+    left: 0 !important;
+    margin-top: -8px !important;
+  }
+
+  ion-item {
+    font-size: 1.5rem;
+  }
+}
+
+.popover-select-dark {
+  ion-backdrop {
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)) !important;
+  }
+
+  .popover-content {
+    background-color: black !important;
+    left: 0 !important;
+    margin-top: -8px !important;
+  }
+
+  ion-item {
+    font-size: 1.5rem;
+    background-color: #151515;
+    color: #808080;
+  }
+
+  ion-list > ion-item:first-child {
+    border-top: 1px solid #000 !important;
+  }
+
+  ion-item .item-inner, ion-list > ion-item:last-child {
+    border-bottom: 1px solid #000 !important;
+  }
+}

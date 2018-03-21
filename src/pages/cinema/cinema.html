@@ -6,13 +6,86 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="orangered">
+    <ion-buttons start>
+      <button ion-button>
+        {{geolocationProvider.currentCity}}&nbsp;
+        <ion-icon name="arrow-down"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>影院</ion-title>
+
+    <ion-buttons end>
+      <button class="nav-button" ion-button icon-only>
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
+  <ion-toolbar class="select-toolbar">
+    <ion-row>
+      <ion-col>
+        <ion-select placeholder="全城" selectedText="全城" interface="popover" [(ngModel)]="cinemaArea"
+                    [selectOptions]="selectOptions">
+          <ion-option *ngFor="let area of cinemasProvider.areas" [value]="area"
+                      (ionSelect)="cinemasProvider.getCinemas(geolocationProvider.currentCityId, cinemaArea, cinemaBrand)">
+            {{area}}
+          </ion-option>
+        </ion-select>
+      </ion-col>
+
+      <ion-col>
+        <ion-select placeholder="品牌" selectedText="品牌" interface="popover" [(ngModel)]="cinemaBrand"
+                    [selectOptions]="selectOptions">
+          <ion-option *ngFor="let brand of cinemasProvider.brands" [value]="brand"
+                      (ionSelect)="cinemasProvider.getCinemas(geolocationProvider.currentCityId, cinemaArea, cinemaBrand)">
+            {{brand}}
+          </ion-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content>
+
+  <ion-fab class="animated bounceInUp" right bottom>
+    <button ion-fab color="tomato" (click)="scrollToTop()">
+      <ion-icon name="arrow-up"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="下拉刷新" refreshingSpinner="bubbles"></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let cinema of cinemasProvider.cinemas">
+      <h2 class="cinema-name">
+        {{cinema["nm"]}}&nbsp;&nbsp;
+        <span class="cinema-sell-price">
+          {{cinema["sellPrice"]}}
+          <span class="cinema-sell-price-suffix">元起</span>
+        </span>
+      </h2>
+
+      <p>{{cinema["addr"]}}</p>
+
+      <div>
+        <img class="cinema-version" *ngIf="theme && cinema['sell']" src="assets/imgs/cinema-version/selling-dark.png"
+             alt="selling"/>
+        <img class="cinema-version" *ngIf="theme && cinema['imax']===1" src="assets/imgs/cinema-version/IMAX-dark.png"
+             alt="IMAX"/>
+
+        <img class="cinema-version" *ngIf="!theme && cinema['sell']" src="assets/imgs/cinema-version/selling.png"
+             alt="selling"/>
+        <img class="cinema-version" *ngIf="!theme && cinema['imax']===1" src="assets/imgs/cinema-version/IMAX.png"
+             alt="IMAX"/>
+      </div>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

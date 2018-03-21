@@ -46,12 +46,12 @@ export class MoviePage {
   theme: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public moviesProvider: MoviesProvider, public geolocationProvider: GeolocationProvider, public parametersProvider: ParametersProvider, public themeProvider: ThemeProvider) {
-    this.moviesProvider.getMovies("init", "hot", this.offset["hot"], this.limit);
-    this.moviesProvider.getMovies("init", "coming", this.offset["hot"], this.limit);
+    this.geolocationProvider.getCurrentCity();
+
+    this.moviesProvider.getMovies("init", this.geolocationProvider.currentCityId, "hot", this.offset["hot"], this.limit);
+    this.moviesProvider.getMovies("init", this.geolocationProvider.currentCityId, "coming", this.offset["hot"], this.limit);
     this.moviesProvider.getTrailers();
     this.moviesProvider.getExpectedMovies();
-
-    this.geolocationProvider.getCurrentCity();
 
     this.getActiveTheme();
   }
@@ -109,7 +109,7 @@ export class MoviePage {
     console.log("do refresh");
     setTimeout(() => {
       this.offset[type] = 0;
-      this.moviesProvider.getMovies("init", type, this.offset[type], this.limit);
+      this.moviesProvider.getMovies("init", this.geolocationProvider.currentCityId, type, this.offset[type], this.limit);
 
       if (type === "coming") {
         this.moviesProvider.getTrailers();
@@ -123,7 +123,7 @@ export class MoviePage {
     console.log("do infinite");
     setTimeout(() => {
       this.offset[type] += this.limit;
-      this.moviesProvider.getMovies("load", type, this.offset[type], this.limit);
+      this.moviesProvider.getMovies("load", this.geolocationProvider.currentCityId, type, this.offset[type], this.limit);
       infiniteScroll.complete();
     }, 1000);
   }
