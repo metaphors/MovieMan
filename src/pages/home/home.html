@@ -45,7 +45,7 @@
       <ion-slides slidesPerView="3.3" #hotMoviesSlides>
         <ion-slide *ngFor="let movie of moviesProvider.hotMovies">
           <div class="hot-movie-img" [style.background-image]="'url(' + movie['img'] + ')'"></div>
-          <h3 class="hot-movie-name" text-nowrap>{{movie['nm']}}</h3>
+          <h3 class="hot-movie-name">{{movie['nm']}}</h3>
         </ion-slide>
       </ion-slides>
     </ion-item>
@@ -71,7 +71,7 @@
               <p class="coming-movie-wish">{{movie['wish']}} 人想看</p>
             </div>
           </div>
-          <h3 class="coming-movie-name" text-nowrap>{{movie['nm']}}</h3>
+          <h3 class="coming-movie-name">{{movie['nm']}}</h3>
           <p class="coming-movie-coming-title">{{movie['comingTitle']}}</p>
         </ion-slide>
       </ion-slides>

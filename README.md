@@ -7,6 +7,8 @@
 ![License GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)
 ![Author metaphors](https://img.shields.io/badge/author-metaphors-blue.svg)
 
+## ***GPL3 协议！！！切勿用于商业用途！！！***
+
 ## Build
 ```
 git clone git@github.com:metaphors/MovieMan.git
@@ -26,10 +28,11 @@ iOS：
 
 ## Preview
 <div>
-	<img alt="home" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/home.jpg" width="32%"/>
-	<img alt="movie1" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/movie1.jpg" width="32%"/>
-	<img alt="movie2" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/movie2.jpg" width="32%"/>
+	<img alt="home" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/home.jpg" width="24%"/>
+	<img alt="movie1" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/movie1.jpg" width="24%"/>
+	<img alt="movie2" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/movie2.jpg" width="24%"/>
 	<img alt="trailer" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/trailer.jpg" width="24%"/>
+	<img alt="cinema" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/cinema.jpg" width="24%"/>
 	<img alt="login" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/login.jpg" width="24%"/>
 	<img alt="profile" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/profile.jpg" width="24%"/>
 	<img alt="dark theme" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/dark_theme.jpg" width="24%"/>
