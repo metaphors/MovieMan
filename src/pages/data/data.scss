@@ -2,4 +2,83 @@ page-data {
   .scroll-content {
     background-color: #f8f8f8;
   }
+
+  .toolbar-md {
+    padding: 0;
+  }
+
+  .toolbar-md .toolbar-background {
+    background-color: white;
+  }
+
+  .segment-button {
+    color: color($colors, gray) !important;
+    font-size: 1.5rem !important;
+    font-weight: bold;
+  }
+
+  .segment-activated {
+    color: color($colors, orangered) !important;
+    font-size: 1.5rem !important;
+    font-weight: bold;
+  }
+
+  .piaofang-day-button {
+    font-weight: bold;
+    width: 82%;
+  }
+
+  .piaofang-title-p, .piaofang-update-info-p {
+    margin-left: 1rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .piaofang-title-p {
+    font-size: 15px !important;
+    font-weight: bold;
+  }
+
+  .piaofang-total-box-span {
+    color: color($colors, orangered) !important;
+  }
+
+  .piaofang-update-info-p {
+    color: color($colors, gray) !important;
+  }
+
+  .is-split-col {
+    display: flex;
+    align-items: center;
+  }
+
+  .is-split-label {
+    display: inline-block;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .piaofang-table {
+    width: 100%;
+    text-align: center;
+    line-height: 25px;
+  }
+
+  .piaofang-table-tr1 {
+    background-color: rgba(255, 69, 0, 0.8);
+    color: #fff;
+  }
+
+  .piaofang-table-td1 {
+    width: 46%;
+  }
+
+  .piaofang-table-td1-below {
+    color: color($colors, gray);
+    font-size: 12px;
+  }
+
+  .piaofang-table-not-td1 {
+    width: 18%;
+  }
 }

@@ -6,13 +6,118 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>票房</ion-title>
+  <ion-navbar color="orangered">
+    <ion-buttons start>
+      <button ion-button>
+        {{geolocationProvider.currentCity}}&nbsp;
+        <ion-icon name="arrow-down"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>数据</ion-title>
   </ion-navbar>
+
+  <ion-toolbar mode="md">
+    <ion-segment mode="md" color="orangered" [(ngModel)]="dataModel">
+      <ion-segment-button value="piaofang">票房</ion-segment-button>
+      <ion-segment-button value="paipian">排片</ion-segment-button>
+      <ion-segment-button value="shangzuo">上座</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
 </ion-header>
 
 
-<ion-content>
+<ion-content [ngSwitch]="dataModel">
+  <div *ngSwitchCase="'piaofang'">
+    <ion-toolbar mode="md">
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button class="piaofang-day-button" small [clear]="piaofangDay!=='yesterday'"
+                  [color]="piaofangDay==='yesterday'?'orangered':'gray'" (click)="getSomedayPiaoFang('yesterday')">
+            昨天
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button class="piaofang-day-button" small [clear]="piaofangDay!=='today'"
+                  [color]="piaofangDay==='today'?'orangered':'gray'" (click)="getSomedayPiaoFang('today')">
+            今天
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button class="piaofang-day-button" small [clear]="piaofangDay!=='tomorrow'"
+                  [color]="piaofangDay==='tomorrow'?'orangered':'gray'" (click)="getSomedayPiaoFang('tomorrow')">
+            明天
+          </button>
+        </ion-col>
+        <ion-col col-5 text-center>
+          <button ion-button class="piaofang-day-button" small [clear]="piaofangDay!=='someday'"
+                  [color]="piaofangDay==='someday'?'orangered':'gray'" icon-end>
+            更多日期&nbsp;
+            <ion-icon name="arrow-down"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
 
+      <ion-row>
+        <ion-col col-8>
+          <p class="piaofang-title-p">
+            {{dataProvider.queryDate}}&nbsp;&nbsp;
+            <span *ngIf="piaofangDay!=='tomorrow'">大盘:</span>
+            <span *ngIf="piaofangDay==='tomorrow'">预售:</span>
+            <span class="piaofang-total-box-span">{{dataProvider.totalBox}}{{dataProvider.totalBoxUnit}}</span>
+          </p>
+          <p class="piaofang-update-info-p" *ngIf="piaofangDay!=='today'">{{dataProvider.updateInfo}}</p>
+          <p class="piaofang-update-info-p" *ngIf="piaofangDay==='today'">{{dataProvider.updateInfo}}&nbsp;更新</p>
+        </ion-col>
+        <ion-col col-4 class="is-split-col">
+          <ion-checkbox color="orangered" [(ngModel)]="isSplit"></ion-checkbox>
+          <ion-label class="is-split-label">&nbsp;含服务费</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+
+    <table class="piaofang-table" *ngIf="isSplit">
+      <tr class="piaofang-table-tr1">
+        <td class="piaofang-table-td1">片名</td>
+        <td class="piaofang-table-not-td1">综合票价</td>
+        <td class="piaofang-table-not-td1">综合票房<br/>(万元)</td>
+        <td class="piaofang-table-not-td1">综合票房<br/>占比</td>
+      </tr>
+      <tr *ngFor="let item of dataProvider.list; let i=index" [style.background-color]="i%2===0?'#fff':'#eee'">
+        <td class="piaofang-table-td1">
+          {{item["movieName"]}}<br/><span class="piaofang-table-td1-below">{{item["releaseInfo"]}}&nbsp;&nbsp;{{item["sumBoxInfo"]}}</span>
+        </td>
+        <td class="piaofang-table-not-td1">{{item["avgViewBox"]}}元</td>
+        <td class="piaofang-table-not-td1">{{item["boxInfo"]}}</td>
+        <td class="piaofang-table-not-td1">{{item["boxRate"]}}</td>
+      </tr>
+    </table>
+
+    <table class="piaofang-table" *ngIf="!isSplit">
+      <tr class="piaofang-table-tr1">
+        <td class="piaofang-table-td1">片名</td>
+        <td class="piaofang-table-not-td1">分账票价</td>
+        <td class="piaofang-table-not-td1">分账票房<br/>(万元)</td>
+        <td class="piaofang-table-not-td1">分账票房<br/>占比</td>
+      </tr>
+      <tr *ngFor="let item of dataProvider.list; let i = index"
+          [style.background-color]="i % 2 === 0 ? '#fff' : '#eee'">
+        <td class="piaofang-table-td1">
+          {{item["movieName"]}}<br/><span class="piaofang-table-td1-below">{{item["releaseInfo"]}}&nbsp;&nbsp;{{item["splitSumBoxInfo"]}}</span>
+        </td>
+        <td class="piaofang-table-not-td1">{{item["splitAvgViewBox"]}}元</td>
+        <td class="piaofang-table-not-td1">{{item["splitBoxInfo"]}}</td>
+        <td class="piaofang-table-not-td1">{{item["splitBoxRate"]}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngSwitchCase="'paipian'">
+
+  </div>
+
+  <div *ngSwitchCase="'shangzuo'">
+
+  </div>
 </ion-content>

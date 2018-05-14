@@ -8,8 +8,8 @@ import {Injectable} from '@angular/core';
 */
 @Injectable()
 export class WilddogProvider {
-  appId: string = "wd8837557731vfogoa";
-  // smsKey: string = "rBU8vLVdAeQoAaXsunlbS0M7gpzWzKcuJjmUSQpw";
+  appId: string = "wd3534949173whtptj";
+  // smsKey: string = "Fo8LVLYiKB2bZFSglbNZSkZCfEbrZSBJQeP56oJo";
 
   constructor() {
   }

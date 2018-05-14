@@ -1,6 +1,7 @@
 page-profile {
   .scroll-content {
     background-color: #f8f8f8;
+    text-align: center;
   }
 
   .back-button {
@@ -23,5 +24,10 @@ page-profile {
   .item-end-span {
     color: gray;
     font-size: 1.3rem;
+  }
+
+  .delete-account-button {
+    width: 90%;
+    margin-top: 32px;
   }
 }

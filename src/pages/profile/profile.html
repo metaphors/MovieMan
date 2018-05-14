@@ -29,15 +29,20 @@
       <span class="item-end-span" item-end>{{user.displayName}}</span>
     </button>
 
-    <button ion-item (click)="openPage(editPhonePage)">
+    <button ion-item (click)="presentReauthenticateAlertAndOpenPage(editPhonePage)">
       <ion-label>绑定手机号</ion-label>
       <span class="item-end-span" item-end *ngIf="user.phone === ''">未绑定</span>
       <span class="item-end-span" item-end *ngIf="user.phone !== ''">{{user.phone}}</span>
     </button>
 
-    <button ion-item (click)="openPage(editPasswordPage)">
+    <button ion-item (click)="presentReauthenticateAlertAndOpenPage(editPasswordPage)">
       <ion-label>帐号密码</ion-label>
       <span class="item-end-span" item-end>修改</span>
     </button>
   </ion-list>
+
+  <button class="delete-account-button" ion-button round color="orangered"
+          (click)="presentReauthenticateAlertAndDeleteAccountAlert()">
+    账户注销
+  </button>
 </ion-content>
