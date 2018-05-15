@@ -25,6 +25,7 @@ export class HomePage {
   @ViewChild('hotMoviesSlides') hotMoviesSlides: Slides;
   @ViewChild('comingMoviesSlides') comingMoviesSlides: Slides;
 
+  movieDetailPage = 'MovieDetailPage';
   informationDetailPage = 'InformationDetailPage';
 
   offset: number = 0;
@@ -85,6 +86,14 @@ export class HomePage {
   openMoviesPage(type: string) {
     this.parametersProvider.setParameterType(type, true);
     this.navCtrl.parent.select(1);
+  }
+
+  openMovieDetailPage(movieId: number) {
+    this.moviesProvider.getMovieDetail(movieId).then(data => {
+      this.navCtrl.push(this.movieDetailPage, {'movieDetail': data}).then(value => {
+        return value;
+      })
+    });
   }
 
   openInformationDetailPage(contentId: number) {

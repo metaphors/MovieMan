@@ -57,7 +57,7 @@
   </ion-refresher>
 
   <ion-list>
-    <ion-item *ngFor="let cinema of cinemasProvider.cinemas">
+    <ion-item *ngFor="let cinema of cinemasProvider.cinemas" tappable (click)="openCinemaDetailPage(cinema['id'])">
       <h2 class="cinema-name">
         {{cinema["nm"]}}&nbsp;&nbsp;
         <span class="cinema-sell-price">

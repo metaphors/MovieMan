@@ -36,6 +36,7 @@ export class MoviePage {
   @ViewChild('innerHotMoviesContent') innerHotMoviesContent: Content;
   @ViewChild('innerComingMoviesContent') innerComingMoviesContent: Content;
 
+  movieDetailPage = 'MovieDetailPage';
   trailerPage = 'TrailerPage';
 
   type: string;
@@ -126,6 +127,14 @@ export class MoviePage {
       this.moviesProvider.getMovies("load", this.geolocationProvider.currentCityId, type, this.offset[type], this.limit);
       infiniteScroll.complete();
     }, 1000);
+  }
+
+  openMovieDetailPage(movieId: number) {
+    this.moviesProvider.getMovieDetail(movieId).then(data => {
+      this.navCtrl.push(this.movieDetailPage, {'movieDetail': data}).then(value => {
+        return value;
+      })
+    });
   }
 
   playTrailer(img: string, url: string, originName: string, movieName: string) {

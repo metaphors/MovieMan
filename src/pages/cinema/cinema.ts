@@ -22,6 +22,8 @@ import {ThemeProvider} from "../../providers/theme/theme";
 export class CinemaPage {
   @ViewChild(Content) content: Content;
 
+  cinemaDetailPage = 'CinemaDetailPage';
+
   cinemaArea: string;
   cinemaBrand: string;
 
@@ -59,5 +61,13 @@ export class CinemaPage {
       this.cinemasProvider.getCinemas(this.geolocationProvider.currentCityId, this.cinemaArea, this.cinemaBrand);
       refresher.complete();
     }, 1500);
+  }
+
+  openCinemaDetailPage(cinemaId: number) {
+    this.cinemasProvider.getCinemaDetail(cinemaId).then(data => {
+      this.navCtrl.push(this.cinemaDetailPage, {'cinemaDetail': data}).then(value => {
+        return value;
+      })
+    });
   }
 }

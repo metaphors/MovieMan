@@ -82,4 +82,13 @@ export class MoviesProvider {
     });
   }
 
+  getMovieDetail(movieId: number) {
+    return new Promise(resolve => {
+      let movieDetailUrl: string = "http://api.maoyan.com/mmdb/movie/v5/" + movieId + ".json";
+      this.http.get(movieDetailUrl).subscribe(data => {
+        resolve(data["data"]["movie"]);
+      });
+    });
+  }
+
 }

@@ -74,4 +74,13 @@ export class CinemasProvider {
       console.log("cinemas", this.cinemas);
     });
   }
+
+  getCinemaDetail(cinemaId: number) {
+    return new Promise(resole => {
+      let cinemaDetailUrl: string = "http://m.maoyan.com/ajax/cinemaDetail?cinemaId=" + cinemaId;
+      this.http.get(cinemaDetailUrl).subscribe(data => {
+        resole(data);
+      });
+    });
+  }
 }

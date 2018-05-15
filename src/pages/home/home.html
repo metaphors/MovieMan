@@ -14,7 +14,7 @@
       </button>
     </ion-buttons>
 
-    <ion-searchbar [placeholder]="'搜索'"></ion-searchbar>
+    <ion-title>电影人</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -43,7 +43,7 @@
 
     <ion-item class="hot-movies-item">
       <ion-slides slidesPerView="3.3" #hotMoviesSlides>
-        <ion-slide *ngFor="let movie of moviesProvider.hotMovies">
+        <ion-slide *ngFor="let movie of moviesProvider.hotMovies" tappable (click)="openMovieDetailPage(movie['id'])">
           <div class="hot-movie-img" [style.background-image]="'url(' + movie['img'] + ')'"></div>
           <h3 class="hot-movie-name">{{movie['nm']}}</h3>
         </ion-slide>
@@ -64,7 +64,8 @@
 
     <ion-item class="coming-movies-item">
       <ion-slides slidesPerView="3.3" #comingMoviesSlides>
-        <ion-slide *ngFor="let movie of moviesProvider.expectedMovies">
+        <ion-slide *ngFor="let movie of moviesProvider.expectedMovies" tappable
+                   (click)="openMovieDetailPage(movie['id'])">
           <div class="coming-movie-img"
                [style.background-image]="'url(' + 'http://p0.meituan.net/165.220'+movie['img'].substring(25) + ')'">
             <div class="coming-movie-img-cover">

@@ -43,7 +43,7 @@
         </ion-refresher>
 
         <ion-list *ngSwitchCase="'hot'">
-          <ion-item *ngFor="let movie of moviesProvider.hotMovies">
+          <ion-item *ngFor="let movie of moviesProvider.hotMovies" tappable (click)="openMovieDetailPage(movie['id'])">
             <div class="movie-img" [style.background-image]="'url(' + movie['img'] + ')'" item-start></div>
 
             <h2 class="movie-name">
@@ -114,7 +114,8 @@
 
           <ion-item class="expected-movies-item">
             <ion-slides slidesPerView="3.3" #innerExpectedMoviesSlides>
-              <ion-slide *ngFor="let movie of moviesProvider.expectedMovies">
+              <ion-slide *ngFor="let movie of moviesProvider.expectedMovies" tappable
+                         (click)="openMovieDetailPage(movie['id'])">
                 <div class="expected-movie-img"
                      [style.background-image]="'url(' + 'http://p0.meituan.net/165.220'+movie['img'].substring(25) + ')'">
                   <div class="expected-movie-img-cover">
@@ -131,7 +132,8 @@
         <ion-list *ngSwitchCase="'coming'">
           <ion-item-divider color="background-light"></ion-item-divider>
 
-          <ion-item *ngFor="let movie of moviesProvider.comingMovies">
+          <ion-item *ngFor="let movie of moviesProvider.comingMovies" tappable
+                    (click)="openMovieDetailPage(movie['id'])">
             <div class="movie-img" [style.background-image]="'url(' + movie['img'] + ')'" item-start></div>
 
             <h2 class="movie-name">{{movie['nm']}}</h2>
