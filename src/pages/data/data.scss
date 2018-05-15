@@ -23,7 +23,7 @@ page-data {
     font-weight: bold;
   }
 
-  .piaofang-day-button {
+  .piaofang-day-button, .paipian-day-button, .shangzuo-day-button {
     font-weight: bold;
     width: 82%;
   }
@@ -64,7 +64,7 @@ page-data {
     line-height: 25px;
   }
 
-  .piaofang-table-tr1 {
+  .piaofang-table-tr1, .paipian-table-tr1, .shangzuo-table-tr1 {
     background-color: rgba(255, 69, 0, 0.8);
     color: #fff;
   }
@@ -80,5 +80,19 @@ page-data {
 
   .piaofang-table-not-td1 {
     width: 18%;
+  }
+
+  .paipian-table, .shangzuo-table {
+    width: 100%;
+    text-align: center;
+    line-height: 35px;
+  }
+
+  .paipian-table-td1, .shangzuo-table-td1 {
+    width: 50%;
+  }
+
+  .paipian-table-not-td1, .shangzuo-table-not-td1 {
+    width: 25%
   }
 }

@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
+import {ChartsModule} from "ng2-charts";
 import {DataPage} from './data';
 
 @NgModule({
@@ -7,6 +8,7 @@ import {DataPage} from './data';
     DataPage,
   ],
   imports: [
+    ChartsModule,
     IonicPageModule.forChild(DataPage),
   ],
 })

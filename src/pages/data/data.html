@@ -19,9 +19,9 @@
 
   <ion-toolbar mode="md">
     <ion-segment mode="md" color="orangered" [(ngModel)]="dataModel">
-      <ion-segment-button value="piaofang">票房</ion-segment-button>
-      <ion-segment-button value="paipian">排片</ion-segment-button>
-      <ion-segment-button value="shangzuo">上座</ion-segment-button>
+      <ion-segment-button value="piaofang" (ionSelect)="scrollToTop()">票房</ion-segment-button>
+      <ion-segment-button value="paipian" (ionSelect)="scrollToTop()">排片</ion-segment-button>
+      <ion-segment-button value="shangzuo" (ionSelect)="scrollToTop()">上座</ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 
@@ -77,6 +77,22 @@
       </ion-row>
     </ion-toolbar>
 
+    <ion-card *ngIf="isSplit">
+      <ion-card-header>综合票房占比环图</ion-card-header>
+      <ion-card-content>
+        <canvas baseChart [chartType]="'doughnut'" [labels]="dataProvider.boxRateMovieNameArray"
+                [data]="dataProvider.boxRateArray" height="333"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="!isSplit">
+      <ion-card-header>分账票房占比环图</ion-card-header>
+      <ion-card-content>
+        <canvas baseChart [chartType]="'doughnut'" [labels]="dataProvider.splitBoxRateMovieNameArray"
+                [data]="dataProvider.splitBoxRateArray" height="333"></canvas>
+      </ion-card-content>
+    </ion-card>
+
     <table class="piaofang-table" *ngIf="isSplit">
       <tr class="piaofang-table-tr1">
         <td class="piaofang-table-td1">片名</td>
@@ -114,10 +130,100 @@
   </div>
 
   <div *ngSwitchCase="'paipian'">
+    <ion-toolbar mode="md">
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button class="paipian-day-button" small [clear]="paipianDay!=='yesterday'"
+                  [color]="paipianDay==='yesterday'?'orangered':'gray'" (click)="getSomedayPaipian('yesterday')">
+            昨天
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button class="paipian-day-button" small [clear]="paipianDay!=='today'"
+                  [color]="paipianDay==='today'?'orangered':'gray'" (click)="getSomedayPaipian('today')">
+            今天
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button class="paipian-day-button" small [clear]="paipianDay!=='tomorrow'"
+                  [color]="paipianDay==='tomorrow'?'orangered':'gray'" (click)="getSomedayPaipian('tomorrow')">
+            明天
+          </button>
+        </ion-col>
+        <ion-col col-5 text-center>
+          <button ion-button class="paipian-day-button" small [clear]="paipianDay!=='someday'"
+                  [color]="paipianDay==='someday'?'orangered':'gray'" icon-end>
+            更多日期&nbsp;
+            <ion-icon name="arrow-down"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
 
+    <ion-card>
+      <ion-card-header>排片占比饼图</ion-card-header>
+      <ion-card-content>
+        <canvas baseChart [chartType]="'pie'" [labels]="dataProvider.showRateMovieNameArray"
+                [data]="dataProvider.showRateArray" height="345"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <table class="paipian-table">
+      <tr class="paipian-table-tr1">
+        <td class="paipian-table-td1">片名</td>
+        <td class="paipian-table-not-td1">排片占比</td>
+        <td class="paipian-table-not-td1">场次</td>
+      </tr>
+      <tr *ngFor="let item of dataProvider.list; let i=index" [style.background-color]="i%2===0?'#fff':'#eee'">
+        <td class="paipian-table-td1">{{item["movieName"]}}</td>
+        <td class="paipian-table-not-td1">{{item["showRate"]}}</td>
+        <td class="paipian-table-not-td1">{{item["showInfo"]}}场</td>
+      </tr>
+    </table>
   </div>
 
   <div *ngSwitchCase="'shangzuo'">
+    <ion-toolbar mode="md">
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button class="shangzuo-day-button" small [clear]="shangzuoDay!=='yesterday'"
+                  [color]="shangzuoDay==='yesterday'?'orangered':'gray'" (click)="getSomedayShangzuo('yesterday')">
+            昨天
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button class="shangzuo-day-button" small [clear]="shangzuoDay!=='today'"
+                  [color]="shangzuoDay==='today'?'orangered':'gray'" (click)="getSomedayShangzuo('today')">
+            今天
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button class="shangzuo-day-button" small [clear]="shangzuoDay!=='tomorrow'"
+                  [color]="shangzuoDay==='tomorrow'?'orangered':'gray'" (click)="getSomedayShangzuo('tomorrow')">
+            明天
+          </button>
+        </ion-col>
+        <ion-col col-5 text-center>
+          <button ion-button class="shangzuo-day-button" small [clear]="shangzuoDay!=='someday'"
+                  [color]="shangzuoDay==='someday'?'orangered':'gray'" icon-end>
+            更多日期&nbsp;
+            <ion-icon name="arrow-down"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
 
+    <table class="shangzuo-table">
+      <tr class="shangzuo-table-tr1">
+        <td class="shangzuo-table-td1">片名</td>
+        <td class="shangzuo-table-not-td1">上座率</td>
+        <td class="shangzuo-table-not-td1">场均人次</td>
+      </tr>
+      <tr *ngFor="let item of dataProvider.list; let i=index" [style.background-color]="i%2===0?'#fff':'#eee'">
+        <td class="shangzuo-table-td1">{{item["movieName"]}}</td>
+        <td class="shangzuo-table-not-td1">{{item["avgSeatView"]}}</td>
+        <td class="shangzuo-table-not-td1">{{item["avgShowView"]}}</td>
+      </tr>
+    </table>
   </div>
 </ion-content>

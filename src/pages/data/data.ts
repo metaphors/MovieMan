@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Content, IonicPage, NavController, NavParams} from 'ionic-angular';
 
 import {GeolocationProvider} from "../../providers/geolocation/geolocation";
 import {DataProvider} from "../../providers/data/data";
@@ -19,22 +19,40 @@ import {DataProvider} from "../../providers/data/data";
   templateUrl: 'data.html',
 })
 export class DataPage {
+  @ViewChild(Content) content: Content;
+
   dataModel: string;
   piaofangDay: string;
   isSplit: boolean;
+  paipianDay: string;
+  shangzuoDay: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geolocationProvider: GeolocationProvider, public dataProvider: DataProvider) {
     this.geolocationProvider.getCurrentCity();
 
     this.dataModel = "piaofang";
-
     this.isSplit = true;
     this.getSomedayPiaoFang("today");
+    this.getSomedayPaipian("today");
+    this.getSomedayShangzuo('today');
   }
 
   getSomedayPiaoFang(day: string) {
     this.piaofangDay = day;
+    this.getSomedayData(day);
+  }
 
+  getSomedayPaipian(day: string) {
+    this.paipianDay = day;
+    this.getSomedayData(day);
+  }
+
+  getSomedayShangzuo(day: string) {
+    this.shangzuoDay = day;
+    this.getSomedayData(day);
+  }
+
+  getSomedayData(day: string) {
     let date = new Date();
 
     if (day === "yesterday") {
@@ -46,7 +64,7 @@ export class DataPage {
     }
 
     let someday: string = this.formatDate(date);
-    this.dataProvider.getDayPiaofang(someday);
+    this.dataProvider.getDayData(someday);
   }
 
   formatDate(date: Date) {
@@ -62,5 +80,9 @@ export class DataPage {
     let someDay: string = year + month + day;
     console.log('day', someDay);
     return someDay;
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop();
   }
 }

@@ -1,0 +1,10 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/wujun4code/typed-chart.js/6d86e2c801cfd55c452842546d1b3bef91525462/typings.json",
+    "raw": "registry:npm/chart.js#2.1.4+20160615174920",
+    "main": "index.d.ts",
+    "version": "",
+    "name": "chart.js"
+  }
+}
