@@ -59,8 +59,12 @@ iOS：
 
 [Chart.js](https://github.com/chartjs/Chart.js)
 
-## ***收款码还是要有的，万一有人给呢***
+## Others
+收款码还是要有的，万一有人给呢 ⁄(⁄ ⁄ ⁄ω⁄ ⁄ ⁄)⁄
 <div>
-	<img alt="Alipay" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/Alipay.JPG" width="24%"/>
-	<img alt="WeChatPay" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/WeChatPay.JPG" width="24%"/>
+	<img alt="Alipay" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/Alipay.JPG" width="30%"/>
+</div>
+<br/>
+<div>
+	<img alt="WeChatPay" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/WeChatPay.JPG" width="30%"/>
 </div>
