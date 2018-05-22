@@ -30,7 +30,7 @@ Android：
 iOS：  
 修改 `Localization native development region` 为 `China`
 
-可解决iOS端Cordova插件文字为英文的问题。
+可解决iOS端Cordova插件文字为英文的问题。
 
 ## Preview
 <div>
@@ -47,6 +47,15 @@ iOS：
 	<img alt="data2" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/data2.jpg" width="24%"/>
 	<img alt="data3" src="https://github.com/metaphors/MovieMan/raw/master/README_IMGS/data3.jpg" width="24%"/>
 </div>
+
+## To Do List
+[ ] feat: "数据"页-"更多日期"按钮对应的日期选择功能(日历)  
+[ ] feat: 城市选择锚点滚动列表  
+[ ] feat: 电影详情页(已有数据)  
+[ ] feat: 影院详情页(已有数据)  
+[ ] fix: "数据"页进入后图表无颜色  
+[ ] feat: Skeleton Screen Loading  
+[ ] feat: App 缓存
 
 ## Thanks
 [WildDog](https://www.wilddog.com)
